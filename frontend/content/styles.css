@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+
+}
+
+div h1{
+    color: red;
+
+}
+
+
+.nav-bar{
+    display: flex;
+    width: 100%;
+    background-color: grey;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+
+}
+
+.nav-bar-content{
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+
+}
