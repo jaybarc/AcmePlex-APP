@@ -115,6 +115,8 @@ body{
     display: flex;
     height: 425px;
     align-items: center;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
 }
 
 .showcase-item{
@@ -141,6 +143,7 @@ body{
     height: 320px;
     width:200px;
     object-fit: cover;
+    border-radius: 5px;
     transition: all 1s ease-in-out;
 
 }
@@ -164,6 +167,7 @@ body{
 
 .showcase-wrapper{
     position: relative;
+    overflow: hidden;
 }
 
 .more-button{

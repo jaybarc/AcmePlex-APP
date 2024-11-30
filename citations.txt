@@ -20,6 +20,9 @@ https://www.cinematerial.com/movies/hotel-transylvania-i837562
 https://www.cinematerial.com/movies/ice-age-continental-drift-i1667889
 https://www.cinematerial.com/movies/my-sassy-girl-i293715/p/swllipet
 
+inspiration referenced from 
+https://www.youtube.com/watch?v=AOlkcLtyXkw - layout inspiration
+
 ---
 
 objextives
@@ -27,3 +30,5 @@ objextives
     -all buttons for screenings will link to login as member or guest
 
 -top navbar will have guest vs MEMBER
+
+-responsiveness is not taken into account atm, assumption under open tab.
