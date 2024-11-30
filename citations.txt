@@ -1,0 +1,15 @@
+image citations
+
+https://www.cinematerial.com/movies/spider-man-across-the-spider-verse-i9362722/p/qxkj0yua
+https://www.cinematerial.com/movies/transformers-rise-of-the-beasts-i5090568
+https://www.cinematerial.com/movies/dosureba-yokattaka-i32335214/p/c0eotxsa
+https://www.cinematerial.com/movies/sonic-the-hedgehog-3-i18259086/p/xjczhhcg
+https://www.cinematerial.com/movies/pride-i3169706/p/wvx0ax2e
+
+---
+
+objextives
+-current screenings
+    -all buttons for screenings will link to login as member or guest
+
+-top navbar will have guest vs MEMBER
