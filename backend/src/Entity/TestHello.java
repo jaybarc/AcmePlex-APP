@@ -1,4 +1,4 @@
-package src;
+package Entity;
 
 // TestHello.java
 public class TestHello {

@@ -1,3 +1,5 @@
+//make variable names consistent
+
 const tin = document.querySelector('.seat-tin');
 const seats = document.querySelectorAll('.row .seat:not(.occupied)');
 const count = document.getElementById('count');
