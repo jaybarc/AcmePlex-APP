@@ -1,5 +1,5 @@
 Compile (must be in backend folder)
-javac -cp lib/mysql-connector-java-8.0.33.jar:. -d out src/DatabaseTest.java
+javac -cp lib/mysql-connector-j-8.0.33.jar:. -d out src/DatabaseTest.java
 javac -d out src/TestHello.java
 
 Run (from backend folder)
