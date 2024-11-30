@@ -21,6 +21,8 @@ body{
     align-items: center;
     padding: 0 50px;
     height: 100%;
+    font-family: 'Sen', sans-serif;
+
 
 }
 
@@ -30,6 +32,7 @@ body{
 
 .logo{
     font-size: 30px;
+    font-family: 'Sen', sans-serif;
 }
 
 .menu-tin{
@@ -40,14 +43,33 @@ body{
 
 .menu-list{
     display: flex;
+    list-style: none;
+}
+
+.menu-item{
+    margin: 0 30px 0 0;
+
 
 }
 
 .profile-tin{
     flex: 2;
+    display: flex;
+    align-items: center;
+}
+
+.profile-text{
+    margin: 0 20;
+
+}
+
+.profile-icon{
+    height: 32px;
+    width: 32px;
+    
 }
     
-
+/*SIDEBAR NAVIGATION*/
 .side-bar{
     color: white;
     width: 50px;
@@ -55,4 +77,26 @@ body{
     background-color: black;
     position: fixed;
     top: 0;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+    justify-content: space-around;
+}
+
+.side-bar-item{
+    
+}
+
+    .side-bar-item img{
+        height: 32px;
+        width: 32px;
+    }
+
+/*MAIN CONTENT*/
+.content{
+    color: white;
+    background-color: #151515;
+    height: calc(100vh - 50px);
 }
