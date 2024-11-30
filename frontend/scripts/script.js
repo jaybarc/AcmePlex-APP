@@ -1,6 +1,18 @@
 const arrowBtns = document.querySelectorAll(".more-button");
 const showcaseLists = document.querySelectorAll(".showcase-list");
 
+window.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.showcase-item-button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            window.location.href = 'book-seats.html';
+        });
+    });
+});
+
+
+
 arrowBtns.forEach((arrow, i)=>{
     const length = showcaseLists[i].querySelectorAll("img").length;
     let count = 0;
