@@ -2,7 +2,6 @@
 INSERT INTO Movies (name, price) VALUES 
 ('Movie 1', 10.00),
 ('Movie 2', 12.00),
-('Movie 3', 8.00),
 ('Movie 4', 9.00);
 
 -- Insert sample seats
