@@ -1,11 +1,17 @@
 package Entity;
 
+import Control.ReservationController;
+
+import java.util.ArrayList;
+
 public class Movie {
     private String movieID;
     private String title;
     private String genre;
     private int duration; // Should be in minutes
     private String synopsis;
+    
+    private ReservationController reservationController;
     
     public Movie(String movieID, String title, String genre, int duration, String synopsis) {
         this.movieID = movieID;
@@ -16,6 +22,10 @@ public class Movie {
     }
     public String toString() {
         return "Movie ID: " + movieID + "\nTitle: " + title + "\nGenre: " + genre + "\nDuration: " + duration + " minutes\nSynopsis: " + synopsis;
+    }
+
+    public ArrayList<Movie> searchMovies(String movieID){
+        return reservationController.searchMovies(movieID);
     }
     
     public String getMovieID() {
