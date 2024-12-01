@@ -78,6 +78,6 @@ public class PaymentController {
      * @return A unique string identifier for the payment.
      */
     private int generatePaymentId() {
-        return "PAY" + System.currentTimeMillis();
+        return (int) (Math.random() * 100000);
     }
 }

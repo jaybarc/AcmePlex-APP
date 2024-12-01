@@ -14,10 +14,10 @@ public class RegisteredUser extends User{
 
     private List<Announcement> receivedAnnouncements;
     
-    public RegisteredUser(String userID, boolean userType, TicketCart cart, String userEmail, String username, 
+    public RegisteredUser(int userID, boolean userType, String userEmail, String username, 
                           String password, String firstName, String lastName, String address, UserBankingInfo paymentInfo
             , Date dateToPayFee) {
-        super(userID, userType, cart, userEmail);
+        super(userID, userType, userEmail);
         this.username = username;
         this.password = password;
         this.firstName = firstName;
