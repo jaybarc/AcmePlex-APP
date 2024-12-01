@@ -5,15 +5,14 @@ public class Ticket {
     private String ticketID;
     private Movie movie;
     private Showtime showtime;
-    private Receipt receipt;
+
     private ScreeningRoom room;
     
-    public Ticket(Seat chosenSeat, String ticketID, Movie movie, Showtime showtime, Receipt receipt, ScreeningRoom room) {
+    public Ticket(Seat chosenSeat, String ticketID, Movie movie, Showtime showtime, ScreeningRoom room) {
         this.chosenSeat = chosenSeat;
         this.ticketID = ticketID;
         this.movie = movie;
         this.showtime = showtime;
-        this.receipt = receipt;
         this.room = room;
     }
     
@@ -40,12 +39,6 @@ public class Ticket {
     }
     public void setShowtime(Showtime showtime) {
         this.showtime = showtime;
-    }
-    public Receipt getReceipt() {
-        return receipt;
-    }
-    public void setReceipt(Receipt receipt) {
-        this.receipt = receipt;
     }
     public ScreeningRoom getRoom() {
         return room;
