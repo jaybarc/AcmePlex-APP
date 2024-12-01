@@ -5,17 +5,15 @@ import com.example.AcmePlex.backend.Control.ReservationController;
 import java.util.ArrayList;
 
 public class User {
-    private String userID;
+    private int userID;
     private boolean userType;
-    private TicketCart cart;
     private String userEmail;
     
     private ReservationController reservationController;
     
-    public User(String userID, boolean userType, TicketCart cart, String userEmail) {
+    public User(int userID, boolean userType, String userEmail) {
         this.userID = userID;
         this.userType = userType;
-        this.cart = cart;
         this.userEmail = userEmail;
     }
     //Functions
@@ -26,10 +24,10 @@ public class User {
         return 0;
     }
     //Getters and Setters
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
     public boolean isUserType() {
@@ -37,12 +35,6 @@ public class User {
     }
     public void setUserType(boolean userType) {
         this.userType = userType;
-    }
-    public TicketCart getCart() {
-        return cart;
-    }
-    public void setCart(TicketCart cart) {
-        this.cart = cart;
     }
     public String getUserEmail() {
         return userEmail;
