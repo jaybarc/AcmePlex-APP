@@ -1,46 +1,115 @@
 package com.example.AcmePlex.backend.Entity;
 
-import com.example.AcmePlex.backend.Control.ReservationController;
-
-import java.util.ArrayList;
-
 public class User {
-    private int userID;
-    private boolean userType;
-    private String userEmail;
-    
-    private ReservationController reservationController;
-    
-    public User(int userID, boolean userType, String userEmail) {
-        this.userID = userID;
-        this.userType = userType;
+    private int userId; // Matches `UserID` column
+    private String userEmail; // Matches `userEmail` column
+    private String username; // Matches `username` column
+    private String password; // Matches `password` column
+    private String firstName; // Matches `firstName` column
+    private String lastName; // Matches `lastName` column
+    private String address; // Matches `address` column (optional)
+    private String customerName; // Matches `customerName` column (optional)
+    private String bankID; // Matches `bankID` column (optional)
+
+    // Constructor
+    public User() {}
+
+    public User(String userEmail, String username, String password, String firstName, String lastName, String address, String customerName, String bankID) {
         this.userEmail = userEmail;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.customerName = customerName;
+        this.bankID = bankID;
     }
-    //Functions
-    public Ticket makeReservation(String showtimeId, String seatId) {
-        return null;
+
+    // Getters and Setters
+    public int getUserId() {
+        return userId;
     }
-    public double cancelReservation(String ticketId) {
-        return 0;
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
-    //Getters and Setters
-    public int getUserID() {
-        return userID;
-    }
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-    public boolean isUserType() {
-        return userType;
-    }
-    public void setUserType(boolean userType) {
-        this.userType = userType;
-    }
+
     public String getUserEmail() {
         return userEmail;
     }
+
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
-    
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getBankID() {
+        return bankID;
+    }
+
+    public void setBankID(String bankID) {
+        this.bankID = bankID;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userEmail='" + userEmail + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", bankID='" + bankID + '\'' +
+                '}';
+    }
 }
