@@ -1,0 +1,38 @@
+image citations
+all images were cited under fair use
+
+icons
+https://fonts.google.com/
+https://www.logo.wine/logo/Visa_Inc.
+https://freebiesupply.com/logos/mastercard-logo/
+
+posters
+https://www.cinematerial.com/movies/spider-man-across-the-spider-verse-i9362722/p/qxkj0yua
+https://www.cinematerial.com/movies/transformers-rise-of-the-beasts-i5090568
+https://www.cinematerial.com/movies/dosureba-yokattaka-i32335214/p/c0eotxsa
+https://www.cinematerial.com/movies/sonic-the-hedgehog-3-i18259086/p/xjczhhcg
+https://www.cinematerial.com/movies/pride-i3169706/p/wvx0ax2e
+https://www.cinematerial.com/movies/lilo-stitch-i11655566/p/3ba4kvf3
+https://www.cinematerial.com/movies/natsu-no-niwa-i110630/p/cfytyay6
+https://www.cinematerial.com/movies/ohikkoshi-i107736/p/tzmzdw3l
+https://www.cinematerial.com/movies/spirited-away-live-on-stage-i26678995
+https://www.cinematerial.com/movies/once-in-a-blue-moon-i1518232/p/rfbx20uh
+https://www.cinematerial.com/movies/madagascar-3-europes-most-wanted-i1277953/p/puiktprz
+https://www.cinematerial.com/movies/hotel-transylvania-i837562
+https://www.cinematerial.com/movies/ice-age-continental-drift-i1667889
+https://www.cinematerial.com/movies/my-sassy-girl-i293715/p/swllipet
+
+inspiration referenced from 
+https://www.youtube.com/watch?v=AOlkcLtyXkw - home screen layout inspiration
+https://www.youtube.com/watch?v=Kb856Ts8Bws - seat booking template layout
+https://www.youtube.com/watch?v=DULSXJ-sfeM - payment template
+
+---
+
+objextives
+-current screenings
+    -all buttons for screenings will link to login as member or guest
+
+-top navbar will have guest vs MEMBER
+
+-responsiveness is not taken into account atm, assumption under open tab.
