@@ -57,7 +57,7 @@
             <!-- Loop through the movies and create an option for each movie -->
             <option th:each="movie : ${movies}" 
                     th:value="${movie.movieID}" 
-                    th:text="${movie.name}"> <!-- Movie ID as value, movie title as text -->
+                    th:text="${movie.title}"> <!-- Movie ID as value, movie title as text -->
             </option>
         </select>
     </div>
