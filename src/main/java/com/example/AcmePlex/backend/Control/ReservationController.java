@@ -50,16 +50,49 @@ public class ReservationController {
     public String getSeats(@PathVariable("movieId") int movieId, Model model) {
         try {
             List<Movie> movies = movieDAO.getAllMovies();
+            List<Seat> seats = seatDAO.getSeatsByMovieId(movieId);
+
+            // Find the selected movie name
+            String selectedMovieName = "Unknown Movie";
+            try {
+                selectedMovieName = movieDAO.getMovieTitleById(movieId); // Fetch title using DAO method
+                if (selectedMovieName == null) {
+                    selectedMovieName = "Unknown Movie"; // Handle case where movie is not found
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                selectedMovieName = "Error fetching movie title"; // Fallback for database errors
+            }
+
+            model.addAttribute("movies", movies);
+            model.addAttribute("seats", seats);
+            model.addAttribute("selectedMovieName", selectedMovieName); // Pass movie name
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "book-seats";
+    }
+
+
+    /* 
+    @GetMapping("/book-seats/{movieId}")
+    public String getSeats(@PathVariable("movieId") int movieId, Model model) {
+        try {
+            List<Movie> movies = movieDAO.getAllMovies();
             List<Seat> seats = seatDAO.getSeatsByMovieId(movieId); // Fetch seats for selected movie
             
             model.addAttribute("movies", movies);
             model.addAttribute("seats", seats);  // Add seats to the model
             model.addAttribute("selectedMovieId", movieId); // Pass selected movieId to the view
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return "book-seats";  // Return the view for booking seats
     }
+        */
+
+
 }
 
 

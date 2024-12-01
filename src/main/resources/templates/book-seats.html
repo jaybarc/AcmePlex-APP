@@ -52,11 +52,16 @@
     <div class="screening-tin">
         <label>Select a Screening</label>
         <select id="screening" onchange="location = this.value;">
+            <!-- Placeholder option -->
+            <option value="" disabled selected>Select a movie</option>
             <option th:each="movie : ${movies}" 
                     th:value="@{/book-seats/{movieId}(movieId=${movie.movieID})}" 
-                    th:text="${movie.title}"></option>
+                    th:text="${movie.title}">
+            </option>
         </select>
     </div>
+    
+    
 
     <ul class="seat-showcase">
         <li>
@@ -87,8 +92,10 @@
     </div>
 
     <p class="text">
-        You have selected <span id="count">0</span> seats for $<span id="total">0</span> 
+        You have selected <span id="count">0</span> seats for the movie: 
+        <span id="movieName" th:text="${selectedMovieName}">[Movie Name]</span>
     </p>
+    
     <button class="payment-btn">Make Payment</button>
 
     <script th:src="@{/scripts/seatScript.js}"></script>

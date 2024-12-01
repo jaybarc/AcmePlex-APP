@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', function() {
     
     buttons.forEach(button => {
         button.addEventListener('click', function() {
-            window.location.href = 'book-seats/0';
+            window.location.href = 'book-seats/1';
         });
     });
 });
