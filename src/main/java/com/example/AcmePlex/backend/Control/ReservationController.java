@@ -55,7 +55,7 @@ public class ReservationController {
             // Find the selected movie name
             String selectedMovieName = "Unknown Movie";
             try {
-                selectedMovieName = movieDAO.getMovieTitleById(movieId); // Fetch title using DAO method
+                selectedMovieName = movieDAO.getMovieById(movieId).getTitle(); // Fetch title using DAO method
                 if (selectedMovieName == null) {
                     selectedMovieName = "Unknown Movie"; // Handle case where movie is not found
                 }
