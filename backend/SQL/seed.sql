@@ -1,8 +1,16 @@
 -- Insert sample movies
-INSERT INTO Movies (name, price) VALUES 
-('Movie 1', 10.00),
-('Movie 2', 12.00),
-('Movie 4', 9.00);
+-- Insert sample data
+INSERT INTO Movies (name, genre, duration, synopsis) VALUES
+('Inception', 'Sci-Fi', 148, 'A thief who enters the dreams of others to steal secrets from their subconscious is given a chance to have his criminal record erased if he can successfully perform an inception.'),
+('Interstellar', 'Sci-Fi', 169, 'A team of explorers must travel beyond this galaxy to ensure humanity’s survival as Earth is dying.'),
+('The Dark Knight', 'Action', 152, 'Batman faces off against the Joker, a criminal mastermind who seeks to create chaos in Gotham City.'),
+('Parasite', 'Drama', 132, 'A poor family becomes entangled with a wealthy family, leading to unexpected consequences.'),
+('Avengers: Endgame', 'Action', 181, 'The Avengers must work together to undo the damage caused by Thanos in the previous battle.'),
+('Spider-Man: No Way Home', 'Action', 148, 'Peter Parker seeks the help of Doctor Strange to undo the chaos caused by the revelation of his secret identity.'),
+('Titanic', 'Romance', 195, 'A young couple falls in love aboard the ill-fated R.M.S. Titanic.'),
+('The Matrix', 'Sci-Fi', 136, 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.'),
+('The Shawshank Redemption', 'Drama', 142, 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.'),
+('The Godfather', 'Crime', 175, 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.');
 
 -- Insert sample seats
 INSERT INTO Seats (row_num, seat_number, status)

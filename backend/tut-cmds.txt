@@ -2,6 +2,19 @@ Compile (must be in backend folder)
 javac -cp lib/mysql-connector-j-8.0.33.jar:. -d out src/DatabaseTest.java
 javac -d out src/TestHello.java
 
+----
+
+from src folder
+javac -cp ".;..\lib\mysql-connector-j-8.0.33.jar" Database/TestMovieDAO.java
+javac -cp ".;..\lib\mysql-connector-java-8.0.33.jar" Database/MovieDAO.java Entity/Movie.java Control/ReservationController.java
+
+
+java -cp ".;..\lib\mysql-connector-j-8.0.33.jar" Database.TestMovieDAO
+
+---
+
 Run (from backend folder)
 java -cp ".;out;lib/mysql-connector-j-9.1.0.jar" src.DatabaseTest
 java -cp ".;out;lib/mysql-connector-java-9.1.0.jar" src.TestHello
+
+

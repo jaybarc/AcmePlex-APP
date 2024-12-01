@@ -14,10 +14,9 @@ public class MovieDAO {
 
     // Create a new movie in the database
     public void addMovie(Movie movie) throws SQLException {
-        String query = "INSERT INTO Movies (name, price) VALUES (?, ?)";
+        String query = "INSERT INTO Movies (name) VALUES (?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, movie.getTitle());
-            stmt.setDouble(2, movie.getPrice());
             stmt.executeUpdate();
         }
     }
@@ -32,9 +31,9 @@ public class MovieDAO {
                 movies.add(new Movie(
                     rs.getString("id"),
                     rs.getString("name"),
-                    "Unknown", // Placeholder for genre
-                    0,         // Placeholder for duration
-                    "Unknown"  // Placeholder for synopsis
+                    rs.getString("genre"), 
+                    rs.getInt("duration"),         
+                    rs.getString("synopsis") 
                 ));
             }
         }
@@ -63,11 +62,10 @@ public class MovieDAO {
 
     // Update a movie
     public void updateMovie(Movie movie) throws SQLException {
-        String query = "UPDATE Movies SET name = ?, price = ? WHERE id = ?";
+        String query = "UPDATE Movies SET name = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, movie.getTitle());
-            stmt.setDouble(2, movie.getPrice());
-            stmt.setString(3, movie.getMovieID());
+            stmt.setString(2, movie.getMovieID());
             stmt.executeUpdate();
         }
     }

@@ -1,11 +1,79 @@
 package Control;
 import Entity.*;
+import Database.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 
+/*JeromeImplementation */
+
+public class ReservationController {
+    private MovieDAO movieDAO;
+
+    public ReservationController() {
+        try {
+            // Set up the connection and DAO
+            Connection connection = DatabaseConnection.getConnection();
+            movieDAO = new MovieDAO(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Retrieve all movies from the database
+    public List<Movie> getAllMovies() {
+        try {
+            return movieDAO.getAllMovies();
+        } catch (SQLException e) {
+            System.out.println("Error retrieving movies: " + e.getMessage());
+            return null;
+        }
+    }
+
+    // Search for a movie by ID
+    public List<Movie> searchMovies(String movieName) {
+        List<Movie> movies = new ArrayList<>();
+        try {
+            // Retrieve movie by ID (or you can change this to retrieve by other criteria)
+            Movie movie = movieDAO.getMovieById(movieName);
+            if (movie != null) {
+                movies.add(movie);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error searching for movie: " + e.getMessage());
+        }
+        return movies; // Return the list (could be empty if no movies found)
+    }
+
+    // Add a new movie
+    public void addMovie(Movie movie) {
+        try {
+            movieDAO.addMovie(movie);
+            System.out.println("Movie added successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error adding movie: " + e.getMessage());
+        }
+    }
+
+    // Get a movie by its ID
+    public Movie getMovieById(String movieID) {
+        try {
+            return movieDAO.getMovieById(movieID);
+        } catch (SQLException e) {
+            System.out.println("Error retrieving movie: " + e.getMessage());
+            return null;
+        }
+    }
+}
+
+
+
+/*
 public class ReservationController {
     // Sample storage for demo purposes (in reality, you would use a database or another persistence mechanism)
     private ArrayList<Movie> movies = new ArrayList<>();
@@ -115,3 +183,4 @@ public class ReservationController {
         showtimes.add(new Showtime("S001", "M001", "SC001", dateTime));
     }
 }
+*/

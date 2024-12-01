@@ -24,9 +24,11 @@ public class Movie {
         return "Movie ID: " + movieID + "\nTitle: " + title + "\nGenre: " + genre + "\nDuration: " + duration + " minutes\nSynopsis: " + synopsis;
     }
 
+    /* 
     public ArrayList<Movie> searchMovies(String movieID){
         return reservationController.searchMovies(movieID);
     }
+    */
     
     public String getMovieID() {
         return movieID;
