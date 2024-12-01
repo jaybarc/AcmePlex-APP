@@ -8,6 +8,8 @@ public class Seat {
     private Integer bookingId;
     private int movieId;
     
+    public Seat(){}
+    
     public Seat(int seatId, int rowNum, int seatNumber, String status, Integer bookingId, int movieId) {
         this.seatId = seatId;
         this.rowNum = rowNum;
