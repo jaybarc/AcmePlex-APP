@@ -1,3 +1,12 @@
+-- Drop the database if it exists
+DROP DATABASE IF EXISTS acmeplexdb;
+
+-- Create the database if it doesn't exist
+CREATE DATABASE acmeplexdb;
+
+-- Use the newly created database
+USE acmeplexdb;
+
 -- Drop Movies table if it already exists
 DROP TABLE IF EXISTS Seats;
 DROP TABLE IF EXISTS Movies;
