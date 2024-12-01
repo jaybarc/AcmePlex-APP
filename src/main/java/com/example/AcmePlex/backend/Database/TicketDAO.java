@@ -1,14 +1,13 @@
 package com.example.AcmePlex.backend.Database;
 
-import com.example.AcmePlex.backend.Entity.ScreeningRoom;
-import com.example.AcmePlex.backend.Entity.Seat;
-import com.example.AcmePlex.backend.Entity.Theater;
-import com.example.AcmePlex.backend.Entity.Ticket;
+import com.example.AcmePlex.backend.Entity.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TicketDAO {
     private Connection connection;
@@ -16,6 +15,8 @@ public class TicketDAO {
     
     private MovieDAO movieDAO;
     private ShowtimeDAO showtimeDAO;
+
+    ArrayList<Seat> seats = new ArrayList<>();
 
     public TicketDAO(Connection connection) {
         this.connection = connection;
@@ -44,11 +45,11 @@ public class TicketDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return new Ticket(
-                            seatDAO.getSeatsByMovieId(rs.getInt("movieId")),
+                            (Seat) seatDAO.getSeatsByMovieId(rs.getInt("movieId")),
                             rs.getString("ticketID"),
-                            movieDAO.getMovieTitleById(String.valueOf(rs.getInt("movieId"))),
-                            showtimeDAO.getShowtimesByMovieId(rs.getInt("movieId")),
-                            new ScreeningRoom(new Theater(), "A5", 5, 5)
+                            movieDAO.getMovieById(rs.getInt("movieId")),
+                            (Showtime) showtimeDAO.getShowtimesByMovieId(rs.getInt("movieId")),
+                            new ScreeningRoom(new Theater(), rs.getString("roomId"),seats,5)
                     );
                 }
             }
