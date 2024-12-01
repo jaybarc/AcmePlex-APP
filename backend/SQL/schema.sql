@@ -1,12 +1,16 @@
 -- Drop Movies table if it already exists
 DROP TABLE IF EXISTS Movies;
 
--- Create Movies table
+-- Create Movies table with additional fields
 CREATE TABLE Movies (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    price DECIMAL(5, 2) NOT NULL
+    id INT AUTO_INCREMENT PRIMARY KEY,   -- Unique identifier for the movie
+    name VARCHAR(255) NOT NULL,          -- Movie title
+    genre VARCHAR(100),                  -- Genre of the movie
+    duration INT,                        -- Duration of the movie in minutes
+    synopsis TEXT,                       -- Brief synopsis of the movie
+    price DECIMAL(5, 2) NOT NULL         -- Ticket price for the movie
 );
+
 
 -- Drop Seats table if it already exists
 DROP TABLE IF EXISTS Seats;
