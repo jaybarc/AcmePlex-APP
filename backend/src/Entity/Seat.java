@@ -1,39 +1,50 @@
 package Entity;
 
 public class Seat {
-    private int rowNum;
-    private int seatNumber;
-    private String status;
+    private String seatID;
+    private char row;
+    private int columns;
+    private boolean isReserved;
+    private double price;
 
     // Constructor
-    public Seat(int rowNum, int seatNumber, String status) {
-        this.rowNum = rowNum;
-        this.seatNumber = seatNumber;
-        this.status = status;
+    public Seat(String seatID, char row, int columns, boolean isReserved, double price) {
+        this.seatID = seatID;
+        this.row = row;
+        this.columns = columns;
+        this.isReserved = isReserved;
+        this.price = price;
     }
-
     // Getters and Setters
-    public int getRowNum() {
-        return rowNum;
+    public String getSeatID() {
+        return seatID;
     }
-
-    public void setRowNum(int rowNum) {
-        this.rowNum = rowNum;
+    public void setSeatID(String seatID) {
+        this.seatID = seatID;
     }
-
-    public int getSeatNumber() {
-        return seatNumber;
+    public char getRow() {
+        return row;
     }
-
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
+    public void setRow(char row) {
+        this.row = row;
     }
-
-    public String getStatus() {
-        return status;
+    public int getColumns() {
+        return columns;
     }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setColumns(int columns) {
+        this.columns = columns;
     }
+    public boolean isReserved() {
+        return isReserved;
+    }
+    public void setReserved(boolean isReserved) {
+        this.isReserved = isReserved;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
 }

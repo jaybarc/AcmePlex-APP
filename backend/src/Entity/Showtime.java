@@ -1,40 +1,22 @@
 package Entity;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Showtime {
     private String showtimeId;
     private String movieId;
-    private Date dateTime;
-    private int availableSeats;
-    private int totalSeats;
-
-    public Showtime(String showtimeId, String movieId, Date dateTime, int totalSeats) {
+    private String screenID;
+    private LocalDateTime dateTime;
+    
+    public Showtime(String showtimeId, String movieId, String screenID, LocalDateTime dateTime) {
         this.showtimeId = showtimeId;
         this.movieId = movieId;
+        this.screenID = screenID;
         this.dateTime = dateTime;
-        this.totalSeats = totalSeats;
-        this.availableSeats = totalSeats;
     }
-
-    public boolean isAvailable() {
-        return availableSeats > 0;
-    }
-
-    public void reserveSeat() {
-        if (isAvailable()) {
-            availableSeats--;
-        } else {
-            throw new IllegalStateException("No seats available.");
-        }
-    }
-
-    public void cancelSeat() {
-        if (availableSeats < totalSeats) {
-            availableSeats++;
-        }
-    }
-
+    
     // Getters and Setters
     public String getShowtimeId() {
         return showtimeId;
@@ -48,23 +30,20 @@ public class Showtime {
     public void setMovieId(String movieId) {
         this.movieId = movieId;
     }
-    public Date getDateTime() {
+    public LocalDateTime getDateTime() {
         return dateTime;
     }
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
-    public int getAvailableSeats() {
-        return availableSeats;
+
+    // Functions
+    public String getFormattedScreeningTime(String pattern, Integer runtimeMinutes) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+        String startTimeFormatted = dateTime.format(formatter); 
+        String endTimeFormatted = dateTime.plusMinutes(runtimeMinutes).format(formatter);
+        return startTimeFormatted + " to " + endTimeFormatted;
     }
-    public void setAvailableSeats(int availableSeats) {
-        this.availableSeats = availableSeats;
-    }
-    public int getTotalSeats() {
-        return totalSeats;
-    }
-    public void setTotalSeats(int totalSeats) {
-        this.totalSeats = totalSeats;
-    }
+ 
     
 }

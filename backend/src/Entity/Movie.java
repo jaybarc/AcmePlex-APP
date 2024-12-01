@@ -4,7 +4,7 @@ public class Movie {
     private String movieID;
     private String title;
     private String genre;
-    private int duration;
+    private int duration; // Should be in minutes
     private String synopsis;
     
     public Movie(String movieID, String title, String genre, int duration, String synopsis) {

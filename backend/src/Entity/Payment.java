@@ -15,8 +15,6 @@ public class Payment {
         this.paymentInfo = paymentInfo;
     }
     
-    //TODO: IDK IF WE IMPLEMENT THE PROCESSPAYMENT HERE OR IN THE CONTROLLER CLASS
-    
     public String getPaymentID() {
         return paymentID;
     }
