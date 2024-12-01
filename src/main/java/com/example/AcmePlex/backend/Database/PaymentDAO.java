@@ -36,7 +36,6 @@ public class PaymentDAO {
             userUpdateStmt.setString(7, payment.getPaymentInfo().getAddress());
             userUpdateStmt.setString(8, payment.getPaymentInfo().getBankID());
             userUpdateStmt.setString(9, payment.getPaymentInfo().getCardNumber());
-7
             userUpdateStmt.executeUpdate();
         }
     }
