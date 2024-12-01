@@ -8,11 +8,11 @@ public class Payment {
     private Date paymentDate;
     private UserBankingInfo paymentInfo;
     
-    public Payment(int paymentID, Double amount, Date paymentDate, String customerName, String bankID, String cardNumber) {
+    public Payment(int paymentID, Double amount, Date paymentDate, String address, String customerName, String bankID, String cardNumber) {
         this.paymentID = paymentID;
         this.amount = amount;
         this.paymentDate = paymentDate;
-        this.paymentInfo = new UserBankingInfo(customerName, bankID, cardNumber);
+        this.paymentInfo = new UserBankingInfo(address, customerName, bankID, cardNumber);
     }
     
     public int getPaymentID() {
@@ -39,5 +39,4 @@ public class Payment {
     public void setPaymentInfo(UserBankingInfo paymentInfo) {
         this.paymentInfo = paymentInfo;
     }
-    
 }

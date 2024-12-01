@@ -27,10 +27,10 @@ public class UserDAO {
             stmt.setString(4, user.getPassword());
             stmt.setString(5, user.getFirstName());
             stmt.setString(6, user.getLastName());
-            stmt.setString(7, user.getAddress());
-            stmt.setString(8, user.getPaymentInfo().getBankID());
-            stmt.setString(9, user.getPaymentInfo().getCardNumber());
-            stmt.setDate(10, new java.sql.Date(user.getDateToPayFee().getTime()));
+            stmt.setString(7, null);
+            stmt.setString(8, null);
+            stmt.setString(9, null);
+            stmt.setDate(10, null);
             stmt.executeUpdate();
         }
     }
@@ -38,7 +38,7 @@ public class UserDAO {
     // Retrieve all users from the database
     public List<User> getAllUsers() throws SQLException {
         List<User> users = new ArrayList<>();
-        String query = "SELECT UserID, userEmail, username, password, firstName, lastName, address, customerName, " +
+        String query = "SELECT UserID, userEmail, username, password, firstName, lastName, address, " +
                 "bankID, dateToPayFee FROM Users";
 
         try (Statement stmt = connection.createStatement();
@@ -53,7 +53,7 @@ public class UserDAO {
                         rs.getString("firstName"),
                         rs.getString("lastName"),
                         rs.getString("address"),
-                        new UserBankingInfo(rs.getString("firstName"), rs.getString("bankID"), rs.getString("cardNumber")),
+                        new UserBankingInfo(rs.getString("address"),rs.getString("firstName"), rs.getString("bankID"), rs.getString("cardNumber")),
                         rs.getDate("dateToPayFee")
                 );
                 users.add(user);
@@ -64,7 +64,8 @@ public class UserDAO {
 
     // Retrieve a single user by ID
     public User getUserById(int userId) throws SQLException {
-        String query = "SELECT UserID, userEmail, username, password, firstName, lastName, address, bankID, cardNumber, dateToPayFee FROM Users WHERE UserID = ?";
+        String query = "SELECT UserID, userEmail, username, password, firstName, lastName, address, \" +\n" +
+                "                \"bankID, dateToPayFee FROM Users WHERE UserID = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, userId);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -78,7 +79,7 @@ public class UserDAO {
                             rs.getString("firstName"),
                             rs.getString("lastName"),
                             rs.getString("address"),
-                            new UserBankingInfo(rs.getString("firstName"), rs.getString("bankID"), rs.getString("cardNumber")),
+                            new UserBankingInfo(rs.getString("address"),rs.getString("firstName"), rs.getString("bankID"), rs.getString("cardNumber")),
                             rs.getDate("dateToPayFee")
                     );
                 }

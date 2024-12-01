@@ -98,15 +98,14 @@ CREATE TABLE Users (
                        password VARCHAR(255) NOT NULL,         -- User password
                        firstName VARCHAR(255) NOT NULL,        -- User's first name
                        lastName VARCHAR(255) NOT NULL,         -- User's last name
-                       address VARCHAR(255) NOT NULL,          -- User's address
-                       customerName VARCHAR(255) NOT NULL,     -- Customer name
-                       bankID VARCHAR(255) NOT NULL            -- Bank ID
+                       address VARCHAR(255),                    -- User's address
+                       bankID VARCHAR(255)                      -- Bank ID
 );
 
 -- Insert sample users
-INSERT INTO Users (userEmail, username, password, firstName, lastName, address, customerName, bankID) VALUES
-('john.doe@example.com', 'johndoe', 'password123', 'John', 'Doe', '123 Main St', 'John Doe', 'BANK123'),
-('jane.smith@example.com', 'janesmith', 'password456', 'Jane', 'Smith', '456 Elm St', 'Jane Smith', 'BANK456'),
-('alice.johnson@example.com', 'alicej', 'password789', 'Alice', 'Johnson', '789 Oak St', 'Alice Johnson', 'BANK789'),
-('bob.brown@example.com', 'bobbrown', 'password101', 'Bob', 'Brown', '101 Pine St', 'Bob Brown', 'BANK012'),
-('charlie.davis@example.com', 'charlied', 'password202', 'Charlie', 'Davis', '202 Maple St', 'Charlie Davis', 'BANK345');
+INSERT INTO Users (userEmail, username, password, firstName, lastName, address, bankID) VALUES
+('john.doe@example.com', 'johndoe', 'password123', 'John', 'Doe', '123 Main St', 'BANK123'),
+('jane.smith@example.com', 'janesmith', 'password456', 'Jane', 'Smith', '456 Elm St', 'BANK456'),
+('alice.johnson@example.com', 'alicej', 'password789', 'Alice', 'Johnson', '789 Oak St', 'BANK789'),
+('bob.brown@example.com', 'bobbrown', 'password101', 'Bob', 'Brown', '101 Pine St', 'BANK012'),
+('charlie.davis@example.com', 'charlied', 'password202', 'Charlie', 'Davis', '202 Maple St', 'BANK345');

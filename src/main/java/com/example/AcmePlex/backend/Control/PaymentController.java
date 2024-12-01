@@ -37,6 +37,7 @@ public class PaymentController {
                     generatePaymentId(),
                     amount,
                     new Date(),
+                    userBankingInfo.getAddress(),
                     userBankingInfo.getCustomerName(),
                     userBankingInfo.getBankID(),
                     userBankingInfo.getCardNumber()

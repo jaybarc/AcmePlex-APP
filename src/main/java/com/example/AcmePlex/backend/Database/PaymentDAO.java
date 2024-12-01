@@ -1,6 +1,7 @@
 package com.example.AcmePlex.backend.Database;
 
 import com.example.AcmePlex.backend.Entity.Payment;
+import com.example.AcmePlex.backend.Entity.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,19 +16,30 @@ public class PaymentDAO {
 
     // Create a new payment in the database
     public void addPayment(Payment payment, int userID) throws SQLException {
-        String query = "INSERT INTO Payments (paymentID, userID, amount, paymentDate, customerName, bankID, cardNumber) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, payment.getPaymentID());
-            stmt.setInt(2, userID);
-            stmt.setDouble(3, payment.getAmount());
-            stmt.setDate(4, new java.sql.Date(payment.getPaymentDate().getTime()));
-            stmt.setString(5, payment.getPaymentInfo().getCustomerName());
-            stmt.setString(6, payment.getPaymentInfo().getBankID());
-            stmt.setString(7, payment.getPaymentInfo().getCardNumber());
-            stmt.executeUpdate();
+        String paymentQuery = "INSERT INTO Payments (paymentID, userID, amount, paymentDate, address, customerName, bankID, cardNumber) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String userUpdateQuery = "UPDATE Users SET address = ?, customerName = ?, bankID = ?, cardNumber = ? WHERE UserID = ?";
+
+        try (PreparedStatement paymentStmt = connection.prepareStatement(paymentQuery);
+             PreparedStatement userUpdateStmt = connection.prepareStatement(userUpdateQuery)) {
+
+            // Insert payment
+            paymentStmt.setInt(1, payment.getPaymentID());
+            paymentStmt.setInt(2, userID);
+            paymentStmt.setDouble(3, payment.getAmount());
+            paymentStmt.setDate(4, new java.sql.Date(payment.getPaymentDate().getTime()));
+            paymentStmt.setString(5, payment.getPaymentInfo().getCustomerName());
+            paymentStmt.setString(6, payment.getPaymentInfo().getBankID());
+            paymentStmt.setString(7, payment.getPaymentInfo().getCardNumber());
+            paymentStmt.executeUpdate();
+
+            // Update user info
+            userUpdateStmt.setString(7, payment.getPaymentInfo().getAddress());
+            userUpdateStmt.setString(8, payment.getPaymentInfo().getBankID());
+            userUpdateStmt.setString(9, payment.getPaymentInfo().getCardNumber());
+7
+            userUpdateStmt.executeUpdate();
         }
     }
-
     // Retrieve all payments from the database
     public List<Payment> getAllPaymentsInfo(int userID) throws SQLException {
         List<Payment> payments = new ArrayList<>();
@@ -41,6 +53,7 @@ public class PaymentDAO {
                             rs.getInt("paymentID"),
                             rs.getDouble("amount"),
                             rs.getDate("paymentDate"),
+                            rs.getString("address"),
                             rs.getString("customerName"),
                             rs.getString("bankID"),
                             rs.getString("cardNumber")
@@ -64,6 +77,7 @@ public class PaymentDAO {
                             rs.getInt("paymentID"),
                             rs.getDouble("amount"),
                             rs.getDate("paymentDate"),
+                            rs.getString("address"),
                             rs.getString("customerName"),
                             rs.getString("bankID"),
                             rs.getString("cardNumber")
