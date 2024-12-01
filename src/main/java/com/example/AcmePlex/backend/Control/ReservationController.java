@@ -35,12 +35,12 @@ public class ReservationController {
     @GetMapping("/book-seats")
     public String getMovies(Model model) {
         try {
-            List<Movie> movies = movieDAO.getAllMovies(); // Get all movies
-            model.addAttribute("movies", movies); // Add movies to the model
+            List<Movie> movies = movieDAO.getAllMovies(); 
+            model.addAttribute("movies", movies); 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "book-seats"; // Return the HTML view name
+        return "book-seats"; 
     }
 }
 

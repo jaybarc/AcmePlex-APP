@@ -29,9 +29,11 @@ window.addEventListener('DOMContentLoaded', function() {
     const button = document.querySelector('.payment-btn');  
     
     button.addEventListener('click', function() {
-        window.location.href = 'payment.html';  
+        window.location.href = 'payment';  
     });
 });
+
+//add cancel selection clears all seats button
 
 
 populateSeats();
