@@ -1,61 +1,59 @@
 package com.example.AcmePlex.backend.Entity;
 
-
-
-import com.example.AcmePlex.backend.Control.ReservationController;
-
-import java.util.ArrayList;
-
 public class Seat {
-    private String seatID;
-    private char row;
-    private int columns;
-    private boolean isReserved;
-    private double price;
-    private ReservationController reservationController;
+    private int seatId;
+    private int rowNum;
+    private int seatNumber;
+    private String status;
+    private Integer bookingId;
+    private int movieId;
 
-    // Constructor
-    public Seat(String seatID, char row, int columns, boolean isReserved, double price) {
-        this.seatID = seatID;
-        this.row = row;
-        this.columns = columns;
-        this.isReserved = isReserved;
-        this.price = price;
+    // Getters and setters
+    public int getSeatId() {
+        return seatId;
     }
-    //Functions
-//    public Seat selectSeat(String seatID){
-//        return reservationController.selectSeat(seatID);
-//    }
-    // Getters and Setters
-    public String getSeatID() {
-        return seatID;
+
+    public void setSeatId(int seatId) {
+        this.seatId = seatId;
     }
-    public void setSeatID(String seatID) {
-        this.seatID = seatID;
+
+    public int getRowNum() {
+        return rowNum;
     }
-    public char getRow() {
-        return row;
+
+    public void setRowNum(int rowNum) {
+        this.rowNum = rowNum;
     }
-    public void setRow(char row) {
-        this.row = row;
+
+    public int getSeatNumber() {
+        return seatNumber;
     }
-    public int getColumns() {
-        return columns;
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
     }
-    public void setColumns(int columns) {
-        this.columns = columns;
+
+    public String getStatus() {
+        return status;
     }
-    public boolean isReserved() {
-        return isReserved;
+
+    public void setStatus(String status) {
+        this.status = status;
     }
-    public void setReserved(boolean isReserved) {
-        this.isReserved = isReserved;
+
+    public Integer getBookingId() {
+        return bookingId;
     }
-    public double getPrice() {
-        return price;
+
+    public void setBookingId(Integer bookingId) {
+        this.bookingId = bookingId;
     }
-    public void setPrice(double price) {
-        this.price = price;
+
+    public int getMovieId() {
+        return movieId;
     }
-    
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
 }

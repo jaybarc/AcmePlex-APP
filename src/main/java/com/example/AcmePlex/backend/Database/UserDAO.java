@@ -21,7 +21,7 @@ public class UserDAO {
         String query = "INSERT INTO Users (UserID, userEmail, username, password, " +
                 "firstName, lastName, address, bankID, cardNumber, dateToPayFee) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, user.getUserID());
+            stmt.setInt(1, user.getUserId());
             stmt.setString(2, user.getUserEmail());
             stmt.setString(3, user.getUsername());
             stmt.setString(4, user.getPassword());

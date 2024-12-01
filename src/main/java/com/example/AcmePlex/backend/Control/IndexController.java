@@ -25,7 +25,7 @@ public class IndexController {
 
     }
 
-    @GetMapping("/payment") //Will need to pass model or take model idk //move to payment controller when u can
+    @GetMapping("/book-seats/payment") //Will need to pass model or take model idk //move to payment controller when u can
     public String Payment(){
         return "payment";
 

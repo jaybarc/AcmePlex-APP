@@ -1,178 +1,96 @@
 <!DOCTYPE html>
-<html lang="en"
-    xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Seats at AcmePlex</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="content/seatStyles.css" />
+    <link rel="stylesheet" th:href="@{/content/seatStyles.css}" />
 </head>
 <body>
+    <!-- Navigation Bar -->
     <div class="nav-bar">
         <div class="nav-container">
             <div class="logo-tin">
                 <h1 class="logo">AcmePlex</h1>
-
             </div>
             <div class="menu-tin">
                 <ul class="menu-list">
                     <li class="menu-item">Upcoming</li>
                     <li class="menu-item">Movies</li>
                     <li class="menu-item"><a href="/register">Register</a></li>
-
                 </ul>
-
             </div>
             <div class="profile-tin">
-                <img class="profile-icon" src="content/images/logos/pfp-icon.png">
+                <img class="profile-icon" th:src="@{/content/images/logos/pfp-icon.png}" alt="Profile Icon">
                 <div class="profile-text">
                     <p>Profile</p>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="side-bar">
         <div class="side-bar-item">
             <a href="/">
-                <img src="content/images/logos/home-icon.png" alt="Home Icon">
+                <img th:src="@{/content/images/logos/home-icon.png}" alt="Home Icon">
             </a>
              
         </div>
         <div class="side-bar-item">
-            <img src="content/images/logos/search-icon.png">
+            <img th:src="@{/content/images/logos/search-icon.png}">
  
         </div>
         <div class="side-bar-item">
-            <img src="content/images/logos/search-theater.png">
+            <img th:src="@{/content/images/logos/search-theater.png}">
  
         </div>
 
     </div>
 
+
+    <!-- Seat Selection Section -->
     <div class="screening-tin">
         <label>Select a Screening</label>
-        <select id="screening">
-            <!-- Loop through the movies and create an option for each movie -->
+        <select id="screening" onchange="location = this.value;">
             <option th:each="movie : ${movies}" 
-                    th:value="${movie.movieID}" 
-                    th:text="${movie.title}"> <!-- Movie ID as value, movie title as text -->
-            </option>
+                    th:value="@{/book-seats/{movieId}(movieId=${movie.movieID})}" 
+                    th:text="${movie.title}"></option>
         </select>
     </div>
-        <ul class="seat-showcase">
-        <li>
-            <div class="seat">
 
-            </div>
+    <ul class="seat-showcase">
+        <li>
+            <div class="seat"></div>
             <small>N/A</small>
-
         </li>
         <li>
-            <div class="seat selected">
-
-            </div>
+            <div class="seat selected"></div>
             <small>Selected</small>
-
         </li>
         <li>
-            <div class="seat occupied">
-
-            </div>
+            <div class="seat occupied"></div>
             <small>Occupied</small>
-
         </li>
-
     </ul>
+
     <div class="seat-tin">
         <div class="screen"><p>Front of theater</p></div>
-        <div class="row">
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-
+        <div th:each="rowNum : ${#numbers.sequence(1, 7)}">
+            <div class="row">
+                <div th:each="seat : ${seats}" 
+                     th:if="${seat.rowNum == rowNum}" 
+                     th:class="${seat.status} ? 'seat ' + seat.status : 'seat'">
+                    <!-- Seat status will determine the class (available, selected, occupied) -->
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-
-        </div>
-        <div class="row">
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-
-        </div>
-        <div class="row">
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-
-        </div>
-        <div class="row">
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-
-        </div>
-        <div class="row">
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-
-        </div>
-        <div class="row">
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-
-        </div>
-
-
     </div>
+
     <p class="text">
         You have selected <span id="count">0</span> seats for $<span id="total">0</span> 
-
     </p>
     <button class="payment-btn">Make Payment</button>
 
-    <script src="scripts/seatScript.js"></script>
+    <script th:src="@{/scripts/seatScript.js}"></script>
 </body>
 </html>
