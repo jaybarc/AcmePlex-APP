@@ -37,7 +37,9 @@ public class PaymentController {
                     generatePaymentId(),
                     amount,
                     new Date(),
-                    userBankingInfo
+                    userBankingInfo.getCustomerName(),
+                    userBankingInfo.getBankID(),
+                    userBankingInfo.getCardNumber()
             );
             System.out.println("Payment successful: " + payment);
             return payment;
@@ -75,7 +77,7 @@ public class PaymentController {
      *
      * @return A unique string identifier for the payment.
      */
-    private String generatePaymentId() {
+    private int generatePaymentId() {
         return "PAY" + System.currentTimeMillis();
     }
 }

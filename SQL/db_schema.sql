@@ -62,3 +62,22 @@ VALUES
 
 (7, 1, 'available'), (7, 2, 'available'), (7, 3, 'available'), (7, 4, 'available'),
 (7, 5, 'available'), (7, 6, 'available'), (7, 7, 'available'), (7, 8, 'available');
+
+
+DROP TABLE IF EXISTS Payments;
+
+CREATE TABLE Payments (
+                         paymentID INT AUTO_INCREMENT PRIMARY KEY,  -- Unique identifier for the payment
+                         amount FLOAT NOT NULL,                     -- Payment amount
+                         paymentDate DATE NOT NULL,                 -- Date of the payment
+                         customerName VARCHAR(255) NOT NULL,        -- Customer name
+                         bankID VARCHAR(255) NOT NULL,              -- Bank ID
+                         cardNumber VARCHAR(255) NOT NULL           -- Card number
+);
+
+INSERT INTO Payments (amount, paymentDate, customerName, bankID, cardNumber) VALUES
+(100.50, '2023-01-15', 'John Doe', 'BANK123', '1234-5678-9012-3456'),
+(250.75, '2023-02-20', 'Jane Smith', 'BANK456', '2345-6789-0123-4567'),
+(300.00, '2023-03-10', 'Alice Johnson', 'BANK789', '3456-7890-1234-5678'),
+(150.25, '2023-04-05', 'Bob Brown', 'BANK012', '4567-8901-2345-6789'),
+(200.00, '2023-05-18', 'Charlie Davis', 'BANK345', '5678-9012-3456-7890');

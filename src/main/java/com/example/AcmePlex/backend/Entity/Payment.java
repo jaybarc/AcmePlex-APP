@@ -3,22 +3,22 @@ package com.example.AcmePlex.backend.Entity;
 import java.util.Date;
 
 public class Payment {
-    private String paymentID;
+    private int paymentID;
     private Double amount;
     private Date paymentDate;
     private UserBankingInfo paymentInfo;
     
-    public Payment(String paymentID, Double amount, Date paymentDate, UserBankingInfo paymentInfo) {
+    public Payment(int paymentID, Double amount, Date paymentDate, String customerName, String bankID, String cardNumber) {
         this.paymentID = paymentID;
         this.amount = amount;
         this.paymentDate = paymentDate;
-        this.paymentInfo = paymentInfo;
+        this.paymentInfo = new UserBankingInfo(customerName, bankID, cardNumber);
     }
     
-    public String getPaymentID() {
+    public int getPaymentID() {
         return paymentID;
     }
-    public void setPaymentID(String paymentID) {
+    public void setPaymentID(int paymentID) {
         this.paymentID = paymentID;
     }
     public Double getAmount() {
