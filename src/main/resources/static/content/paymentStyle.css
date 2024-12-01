@@ -100,3 +100,10 @@ form .btn{
 body{
 
 }
+
+.summary{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 10px 0 10px 0;
+}
