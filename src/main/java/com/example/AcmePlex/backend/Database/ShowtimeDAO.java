@@ -36,6 +36,21 @@ public class ShowtimeDAO {
         }
         return showtimes;
     }
+    
+    // Retrieve all showtimes by movie ID
+    public List<String> getShowtimesByMovieId(int movieId) throws SQLException {
+        List<String> showtimes = new ArrayList<>();
+        String query = "SELECT showtime FROM Showtimes WHERE movieId = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, movieId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    showtimes.add(rs.getString("showtime"));
+                }
+            }
+        }
+        return showtimes;
+    }
 
     // Update a showtime by ID
     public void updateShowtime(int showtimeId, String newShowtime) throws SQLException {

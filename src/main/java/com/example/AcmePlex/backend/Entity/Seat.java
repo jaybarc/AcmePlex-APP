@@ -7,6 +7,15 @@ public class Seat {
     private String status;
     private Integer bookingId;
     private int movieId;
+    
+    public Seat(int seatId, int rowNum, int seatNumber, String status, Integer bookingId, int movieId) {
+        this.seatId = seatId;
+        this.rowNum = rowNum;
+        this.seatNumber = seatNumber;
+        this.status = status;
+        this.bookingId = bookingId;
+        this.movieId = movieId;
+    }
 
     // Getters and setters
     public int getSeatId() {
