@@ -12,6 +12,8 @@ body {
     justify-content:center;
     height: 100vh;
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+
 
 }
 
@@ -146,6 +148,12 @@ body {
 .menu-tin{
     flex: 6;
 
+
+}
+
+.menu-item a{
+    text-decoration: none;
+    color: white;
 
 }
 
