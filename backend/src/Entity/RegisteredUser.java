@@ -1,6 +1,7 @@
 package Entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class RegisteredUser extends User{
     private String username;
@@ -10,6 +11,8 @@ public class RegisteredUser extends User{
     private String address;
     private UserBankingInfo paymentInfo;
     private Date dateToPayFee;
+
+    private List<Announcement> receivedAnnouncements;
     
     public RegisteredUser(String userID, boolean userType, TicketCart cart, String userEmail, String username, 
                           String password, String firstName, String lastName, String address, UserBankingInfo paymentInfo
@@ -22,6 +25,19 @@ public class RegisteredUser extends User{
         this.address = address;
         this.paymentInfo = paymentInfo;
         this.dateToPayFee = dateToPayFee;
+    }
+
+    /**
+     * Receives an announcement and stores it in the user's list of received announcements.
+     *
+     * @param announcement The announcement to receive.
+     */
+    public void receiveAnnouncement(Announcement announcement) {
+        if (announcement == null) {
+            throw new IllegalArgumentException("Announcement cannot be null.");
+        }
+        receivedAnnouncements.add(announcement);
+        System.out.println("Announcement received");
     }
     
     public String getUsername() {

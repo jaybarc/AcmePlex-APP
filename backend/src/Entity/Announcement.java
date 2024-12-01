@@ -2,13 +2,13 @@ package Entity;
 
 import java.util.Date;
 
-public class Annoucement {
+public class Announcement {
     private String annoucementID;
     private Date earlyAnnoucementDate;
     private Date publicAnnoucementDate;
     private Movie movie_to_annouce;
     
-    public Annoucement(String annoucementID, Date earlyAnnoucementDate, Date publicAnnoucementDate, Movie movie_to_annouce) {
+    public Announcement(String annoucementID, Date earlyAnnoucementDate, Date publicAnnoucementDate, Movie movie_to_annouce) {
         this.annoucementID = annoucementID;
         this.earlyAnnoucementDate = earlyAnnoucementDate;
         this.publicAnnoucementDate = publicAnnoucementDate;

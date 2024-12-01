@@ -1,11 +1,16 @@
 package Entity;
 
+import Control.ReservationController;
+
+import java.util.ArrayList;
+
 public class Seat {
     private String seatID;
     private char row;
     private int columns;
     private boolean isReserved;
     private double price;
+    private ReservationController reservationController;
 
     // Constructor
     public Seat(String seatID, char row, int columns, boolean isReserved, double price) {
@@ -14,6 +19,10 @@ public class Seat {
         this.columns = columns;
         this.isReserved = isReserved;
         this.price = price;
+    }
+    //Functions
+    public Seat selectSeat(String seatID){
+        return reservationController.selectSeat(seatID);
     }
     // Getters and Setters
     public String getSeatID() {
