@@ -206,3 +206,13 @@ body {
         width: 32px;
     }
 
+.payment-btn{
+    padding: 10px;
+    background-color: #3b3b3b;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+
+}

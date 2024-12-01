@@ -6,6 +6,15 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const screeningSelect = document.getElementById('screening');
 
+window.addEventListener('DOMContentLoaded', function() {
+    const button = document.querySelector('.payment-btn');  
+    
+    button.addEventListener('click', function() {
+        window.location.href = 'payment.html';  
+    });
+});
+
+
 populateSeats();
 let ticketPrice = +screeningSelect.value;
 
