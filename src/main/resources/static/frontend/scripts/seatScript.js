@@ -6,6 +6,25 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const screeningSelect = document.getElementById('screening');
 
+fetchMovies();
+
+function fetchMovies() {
+    fetch('http://localhost:8080/movies')
+        .then(response => response.json())
+        .then(movies => {
+            const screeningSelect = document.getElementById('screening');
+            movies.forEach(movie => {
+                const option = document.createElement('option');
+                option.value = movie.price;
+                option.textContent = movie.name;
+                screeningSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching movies:', error);
+        });
+}
+
 window.addEventListener('DOMContentLoaded', function() {
     const button = document.querySelector('.payment-btn');  
     
