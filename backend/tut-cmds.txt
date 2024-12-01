@@ -8,6 +8,9 @@ from src folder
 javac -cp ".;..\lib\mysql-connector-j-8.0.33.jar" Database/TestMovieDAO.java
 javac -cp ".;..\lib\mysql-connector-java-8.0.33.jar" Database/MovieDAO.java Entity/Movie.java Control/ReservationController.java
 
+for server
+javac -cp lib/mysql-connector-java-8.0.33.jar:lib/gson-2.8.8.jar *.java
+
 
 java -cp ".;..\lib\mysql-connector-j-8.0.33.jar" Database.TestMovieDAO
 
@@ -16,5 +19,9 @@ java -cp ".;..\lib\mysql-connector-j-8.0.33.jar" Database.TestMovieDAO
 Run (from backend folder)
 java -cp ".;out;lib/mysql-connector-j-9.1.0.jar" src.DatabaseTest
 java -cp ".;out;lib/mysql-connector-java-9.1.0.jar" src.TestHello
+
+for server
+java -cp lib/mysql-connector-java-8.0.33.jar:lib/gson-2.8.8.jar SimpleHttpServer
+
 
 
