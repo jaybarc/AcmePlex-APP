@@ -108,6 +108,18 @@ form .text{
 
 }
 
+form .input-box.button {
+    border:
+
+}
+
+form .input-box.button:hover{
+    border-color: black;
+    cursor: pointer;
+
+    
+}
+
 /*NAVBAR RELATED*/
 .nav-bar{
     width: 100%;
