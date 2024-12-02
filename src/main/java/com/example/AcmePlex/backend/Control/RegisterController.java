@@ -2,8 +2,6 @@ package com.example.AcmePlex.backend.Control;
 
 import com.example.AcmePlex.backend.Database.DatabaseConnection;
 import com.example.AcmePlex.backend.Database.UserDAO;
-import com.example.AcmePlex.backend.Entity.RegisteredUser;
-import org.apache.tomcat.util.http.ConcurrentDateFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 @Controller
 public class RegisterController {

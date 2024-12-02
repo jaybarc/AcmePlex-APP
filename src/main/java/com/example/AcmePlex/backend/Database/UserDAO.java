@@ -25,6 +25,64 @@ public class UserDAO {
             stmt.executeUpdate();
         }
     }
+    
+    public LocalDate getregisrationDate(String username) throws SQLException {
+        String query = "SELECT registrationDate FROM Users WHERE username = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getDate("registrationDate").toLocalDate();
+                }
+            }
+        }
+        return null;
+    }
+    
+    public void setregisrationDate(String username, LocalDate date) throws SQLException {
+        String query = "UPDATE Users SET registrationDate = ? WHERE username = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setDate(1, Date.valueOf(date));
+            stmt.setString(2, username);
+            stmt.executeUpdate();
+        }
+    }
+    
+    public void setBankBalance(String username, double bankBalance) throws SQLException {
+        String query = "UPDATE Users SET bankBalance = ? WHERE username = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setDouble(1, bankBalance);
+            stmt.setString(2, username);
+            stmt.executeUpdate();
+        }
+    }
+    
+    public double getBankBalance(String username) throws SQLException {
+        String query = "SELECT bankBalance FROM Users WHERE username = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getDouble("bankBalance");
+                }
+            }
+        }
+        return 0.0;
+    }
+    
+    // Get email from username
+    public String getEmail(String username) throws SQLException {
+        String query = "SELECT userEmail FROM Users WHERE username = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("userEmail");
+                }
+            }
+        }
+        return null;
+    }
 
    
 
