@@ -96,9 +96,7 @@ form .text{
     text-align: center;
 }
 
-form .input-box.button {
-    border:
-}
+
 
 form .input-box.button:hover{
     border-color: black;
@@ -191,4 +189,20 @@ form .input-box.button:hover{
 .side-bar-item img{
     height: 32px;
     width: 32px;
+}
+#search-input{
+    position: absolute;
+    top: -812%;
+    left: 650px;
+    transform: translateY(-50%);
+    display: none;
+    border: 1px solid #808080;
+    padding: 5px;
+    border-radius: 4px;
+    color: #FFF;
+    width: 200 px;
+    z-index: 1000;
+    background-color: rgba(30, 30, 30, 0.8);
+    animation: slideIn 0.3s ease-out;
+
 }

@@ -108,3 +108,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
 });
+
+document.getElementById("search-icon").addEventListener("click", function(){
+    const searchInput = document.getElementById("search-input");
+    if(searchInput.style.display === "none" || searchInput.style.display === ""){
+    searchInput.style.display = "block";
+    searchInput.focus();
+}
+    else{
+        searchInput.style.display = "none";
+    }
+});
+
+document.getElementById('search-input').addEventListener('input', function (){
+    const query = this.value.toLowerCase().trim();
+    const movieItems = document.querySelectorAll('.showcase-item');
+
+    movieItems.forEach(item =>{
+        const movieName = item.getAttribute('data-name').toLowerCase();
+        if(movieName.includes(query)){
+            item.classList.remove('hidden');
+        } 
+        else{
+            item.classList.add('hidden');
+        }
+    });
+});

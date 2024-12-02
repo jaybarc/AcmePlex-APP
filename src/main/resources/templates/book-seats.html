@@ -17,7 +17,7 @@
             <div class="menu-tin">
                 <ul class="menu-list">
                     <li class="menu-item">Upcoming</li>
-                    <li class="menu-item">Movies</li>
+                    <li class="menu-item"><a href= "/#more-movies">Movies</li>
                     <li class="menu-item"><a href="/register">Register</a></li>
                 </ul>
             </div>
@@ -37,7 +37,9 @@
              
         </div>
         <div class="side-bar-item">
-            <img th:src="@{/content/images/logos/search-icon.png}">
+            <img src="@{/content/images/logos/home-icon.png}" id = "search-icon" alt = "Search">
+            <input type = "text" id = "search-input" placeholder= "Search a Movie" name = "query">
+            
  
         </div>
         <div class="side-bar-item">
