@@ -23,13 +23,6 @@ public class IndexController {
     public String Index(){
         return "index";
 
-    }
-
-    @GetMapping("/book-seats/payment") //Will need to pass model or take model idk //move to payment controller when u can
-    public String Payment(){
-        return "payment";
-
-    }
-    
+    }    
     
 }

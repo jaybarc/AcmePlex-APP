@@ -5,11 +5,18 @@ import com.example.AcmePlex.backend.Database.MovieDAO;
 import com.example.AcmePlex.backend.Database.SeatDAO;
 import com.example.AcmePlex.backend.Entity.Movie;
 import com.example.AcmePlex.backend.Entity.Seat;
+import com.example.AcmePlex.backend.Entity.Payment;
 
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -73,25 +80,25 @@ public class ReservationController {
         return "book-seats";
     }
 
+    @GetMapping("/book-seats/payment")
+    public String Payment(){
+        return "payment";
 
-    /* 
-    @GetMapping("/book-seats/{movieId}")
-    public String getSeats(@PathVariable("movieId") int movieId, Model model) {
-        try {
-            List<Movie> movies = movieDAO.getAllMovies();
-            List<Seat> seats = seatDAO.getSeatsByMovieId(movieId); // Fetch seats for selected movie
-            
-            model.addAttribute("movies", movies);
-            model.addAttribute("seats", seats);  // Add seats to the model
-            model.addAttribute("selectedMovieId", movieId); // Pass selected movieId to the view
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "book-seats";  // Return the view for booking seats
     }
-        */
 
+    
+    @PostMapping("/process-payment")
+    public ResponseEntity<Map<String, Object>> processPayment(@RequestBody Payment paymentData) {
+        // Process the payment (e.g., save to DB, send email, etc.)
+        boolean success = true;
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", success);
+
+        return ResponseEntity.ok(response);
+    }
+
+    
 
 }
 

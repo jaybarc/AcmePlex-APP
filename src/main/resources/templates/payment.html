@@ -9,116 +9,95 @@
 </head>
 <body>
     <div class="container">
-        <form action="">
+        <form action="" id="payment-form">
             <div class="row">
                 <div class="column">
                     <h3 class="title">Billing Address</h3>
                     <div class="input-box">
                         <span>Full Name:</span>
-                        <input type="text">
-
+                        <input type="text" name="full-name" required>
                     </div>
                     <div class="input-box">
                         <span>Email:</span>
-                        <input type="text">
-
+                        <input type="text" name="email" required>
                     </div>
 
                     <div class="input-box">
                         <span>Address:</span>
-                        <input type="text">
-
+                        <input type="text" name="address" required>
                     </div>
 
                     <div class="input-box">
                         <span>City:</span>
-                        <input type="text">
-
+                        <input type="text" name="city" required>
                     </div>
 
                     <div class="flex">
                         <div class="input-box">
                             <span>Province:</span>
-                            <input type="text">
-    
+                            <input type="text" name="province" required>
                         </div>
                         <div class="input-box">
                             <span>Zip Code:</span>
-                            <input type="text">
-    
+                            <input type="text" name="zip-code" required>
                         </div>
-
                     </div>
-
-
                 </div>
+
                 <div class="column">
                     <h3 class="title">Payment Details</h3>
                     <div class="input-box">
                         <span>Cards Accepted:</span>
                         <img th:src="@{/content/images/logos/mastercard-logo-png-transparent.png}">
                         <img th:src="@{/content/images/logos/visa.png}">
-
                     </div>
                     <div class="input-box">
                         <span>Name on Card:</span>
-                        <input type="text">
-
+                        <input type="text" name="card-name" required>
                     </div>
 
                     <div class="input-box">
                         <span>Card Number:</span>
-                        <input type="text">
-
+                        <input type="text" name="card-number" required>
                     </div>
 
                     <div class="input-box">
                         <span>CVV:</span>
-                        <input type="text">
-
+                        <input type="text" name="card-cvv" required>
                     </div>
 
                     <div class="flex">
                         <div class="input-box">
                             <span>Exp. Month:</span>
-                            <input type="text">
-    
+                            <input type="text" name="exp-month" required>
                         </div>
                         <div class="input-box">
                             <span>Exp. Year:</span>
-                            <input type="text">
-    
+                            <input type="text" name="exp-year" required>
                         </div>
-
                     </div>
-
-
                 </div>
-
-
-
             </div>
+
             <div class="bottom-form">
                 <div class="buttons">
-                <button type="submit" class="btn">
-                    Submit
-                </button>
-                <button type="button" class="btn cancel">
-                    Cancel Payment
-                </button>    
+                    <button type="submit" class="btn">
+                        Submit
+                    </button>
+                    <button type="button" class="btn cancel">
+                        Cancel Payment
+                    </button>
                 </div>
             </div>
+
             <div class="summary">
                 <h3>Payment Summary:</h3>
                 <div>
                     <p>Number of Seats: <span id="seat-count"></span></p>
                     <p>Total: <span id="total-price"></span></p>
-    
                 </div>
-                <!--Add user discount here-->
             </div>
         </form>
-
     </div>
     <script th:src="@{/scripts/paymentScripts.js}"></script>
 </body>
