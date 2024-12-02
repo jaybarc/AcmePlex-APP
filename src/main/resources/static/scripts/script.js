@@ -33,6 +33,8 @@ arrowBtns.forEach((arrow, i)=>{
 
 });
 
+//Search bar stuff
+
 document.getElementById("search-icon").addEventListener("click", function(){
     const searchInput = document.getElementById("search-input");
     if(searchInput.style.display === "none" || searchInput.style.display === ""){
@@ -44,16 +46,17 @@ document.getElementById("search-icon").addEventListener("click", function(){
     }
 });
 
-document.getElementById('search-bar').addEventListener('input', function () {
-    const query = this.value.toLowerCase().trim(); // Get the search query
-    const movieItems = document.querySelectorAll('.showcase-item'); // Get all movie items
+document.getElementById('search-input').addEventListener('input', function (){
+    const query = this.value.toLowerCase().trim();
+    const movieItems = document.querySelectorAll('.showcase-item');
 
-    movieItems.forEach(item => {
-        const movieName = item.getAttribute('data-name').toLowerCase(); // Get the movie name
-        if (movieName.includes(query)) {
-            item.classList.remove('hidden'); // Show if it matches the query
-        } else {
-            item.classList.add('hidden'); // Hide if it doesn't match
+    movieItems.forEach(item =>{
+        const movieName = item.getAttribute('data-name').toLowerCase();
+        if(movieName.includes(query)){
+            item.classList.remove('hidden');
+        } 
+        else{
+            item.classList.add('hidden');
         }
     });
 });
