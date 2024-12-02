@@ -146,7 +146,6 @@ DROP TABLE IF EXISTS Tickets;
 CREATE TABLE Tickets (
                          ticketId INT PRIMARY KEY AUTO_INCREMENT,
                          seatId INT NOT NULL,
-                         ticketID VARCHAR(255) NOT NULL,
                          movieId INT NOT NULL,
                          showtimeId INT NOT NULL,
                          roomId INT NOT NULL,

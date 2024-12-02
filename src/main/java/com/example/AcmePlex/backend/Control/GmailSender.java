@@ -1,4 +1,4 @@
-package com.example.AcmePlex.backend.Entity;
+package com.example.AcmePlex.backend.Control;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

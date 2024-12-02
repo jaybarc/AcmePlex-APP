@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Payment {
     private int paymentID;
+    
+    private Ticket ticket;
     private Double amount;
     private Date paymentDate;
     private String fullName;
@@ -149,5 +151,9 @@ public class Payment {
 
     public void setExpYear(String expYear) {
         this.expYear = expYear;
+    }
+    
+    public Ticket getTicket() {
+        return ticket;
     }
 }

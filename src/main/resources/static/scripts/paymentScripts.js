@@ -91,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('An error occurred. Please try again.');
         });
     });
+    
+    
 
     // Handle cancel button to redirect to home page without submitting
     cancelButton.addEventListener('click', function () {

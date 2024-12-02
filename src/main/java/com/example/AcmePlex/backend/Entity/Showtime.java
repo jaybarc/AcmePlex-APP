@@ -5,12 +5,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Showtime {
-    private String showtimeId;
+    private int showtimeId;
     private String movieId;
     private String screenID;
     private LocalDateTime dateTime;
     
-    public Showtime(String showtimeId, String movieId, String screenID, LocalDateTime dateTime) {
+    public Showtime(int showtimeId, String movieId, String screenID, LocalDateTime dateTime) {
         this.showtimeId = showtimeId;
         this.movieId = movieId;
         this.screenID = screenID;
@@ -18,10 +18,10 @@ public class Showtime {
     }
     
     // Getters and Setters
-    public String getShowtimeId() {
+    public int getShowtimeId() {
         return showtimeId;
     }
-    public void setShowtimeId(String showtimeId) {
+    public void setShowtimeId(int showtimeId) {
         this.showtimeId = showtimeId;
     }
     public String getMovieId() {
