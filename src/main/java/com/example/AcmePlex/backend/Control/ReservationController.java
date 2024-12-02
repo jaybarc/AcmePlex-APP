@@ -7,8 +7,12 @@ import com.example.AcmePlex.backend.Entity.Movie;
 import com.example.AcmePlex.backend.Entity.Seat;
 import com.example.AcmePlex.backend.Entity.Payment;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import com.example.AcmePlex.backend.Entity.GmailSender;
+import com.example.AcmePlex.backend.Entity.Payment;
 
 import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +32,9 @@ import java.sql.SQLException;
 
 @Controller
 public class ReservationController {
+    @Autowired
+    private GmailSender gmailSender;
+
     private MovieDAO movieDAO;
     private SeatDAO seatDAO;
 
@@ -89,12 +96,38 @@ public class ReservationController {
     
     @PostMapping("/process-payment")
     public ResponseEntity<Map<String, Object>> processPayment(@RequestBody Payment paymentData) {
-        // Process the payment (e.g., save to DB, send email, etc.)
-        boolean success = true;
+        // Log payment details (you can replace this with saving to a database)
+        System.out.println("Processing payment for: " + paymentData.getFullName());
+        System.out.println("Payment Amount: $" + paymentData.getAmount());
+        System.out.println("Payment Date: " + new Date());
 
+        // Generate receipt email body
+        String receiptBody = "Dear " + paymentData.getFullName() + ",\n\n"
+            + "Thank you for your payment!\n\n"
+            + "Payment Details:\n"
+            + "Amount Paid: $" + paymentData.getAmount() + "\n"
+            + "Date: " + new Date() + "\n\n"
+            + "Billing Address:\n"
+            + paymentData.getAddress() + ", " + paymentData.getCity() + ", " 
+            + paymentData.getProvince() + " " + paymentData.getZipCode() + "\n\n"
+            + "Thank you for choosing AcmePlex.";
+
+        // Send receipt email
+        try {
+            gmailSender.sendSimpleEmail(paymentData.getEmail(), receiptBody);
+            System.out.println("Receipt email sent to " + paymentData.getEmail());
+        } catch (Exception e) {
+            System.err.println("Failed to send email: " + e.getMessage());
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("success", false);
+            errorResponse.put("error", "Failed to send receipt email.");
+            return ResponseEntity.status(500).body(errorResponse);
+        }
+
+        // Return success response
         Map<String, Object> response = new HashMap<>();
-        response.put("success", success);
-
+        response.put("success", true);
+        response.put("message", "Payment processed successfully.");
         return ResponseEntity.ok(response);
     }
 
