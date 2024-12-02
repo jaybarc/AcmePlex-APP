@@ -206,7 +206,8 @@ VALUES
 ('jane.smith@example.com', 'janesmith', 'password456', 'Jane', 'Smith', '2023-10-02', 1500.50),
 ('alice.johnson@example.com', 'alicejohnson', 'password789', 'Alice', 'Johnson', '2023-10-03', 2000.75),
 ('bob.brown@example.com', 'bobbrown', 'password321', 'Bob', 'Brown', '2023-10-04', 1200.00),
-('carol.white@example.com', 'carolwhite', 'password654', 'Carol', 'White', '2023-10-05', 1800.25);
+('carol.white@example.com', 'carolwhite', 'password654', 'Carol', 'White', '2023-10-05', 1800.25),
+('ducduynguyen051104@gmail.com', 'david', '123123', 'david', 'nguyen', '2023-10-05', 1000);
 
 -- Insert sample payments into Payments table
 -- Match userID with the appropriate UserID from the Users table
