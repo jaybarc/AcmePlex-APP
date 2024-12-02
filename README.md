@@ -8,7 +8,7 @@ AcmePlex is a movie booking application built with Java, Spring Boot, and MySQL.
 - Java (Must be JDK version 21 or above (21 recommended))
 - Spring Boot
 - MySQL
-- Maven
+- Maven (If you are using VScode, download Maven extension)
 - JavaScript
 
 ## Project Structure
@@ -40,8 +40,4 @@ AcmePlex is a movie booking application built with Java, Spring Boot, and MySQL.
 6. Open your browser and go to `http://localhost:8080`.
 
 ---
-
-## Detailed Explanation
-
-WILL DO IT LATER
 
