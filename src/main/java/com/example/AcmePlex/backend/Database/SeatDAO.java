@@ -6,6 +6,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class SeatDAO {
     private Connection connection;
 
@@ -36,12 +38,35 @@ public class SeatDAO {
         return seats;
     }
 
+    public void updateSeatsToOccupied(List<Integer> seatIds) throws SQLException {
+        for (int seatId : seatIds) {
+            try {
+                updateSeatStatus(seatId, "occupied");
+            } catch (SQLException e) {
+                System.err.println("Error updating seat ID " + seatId + ": " + e.getMessage());
+                throw e;  
+            }
+        }
+    }
+    
     public void updateSeatStatus(int seatId, String status) throws SQLException {
         String query = "UPDATE Seats SET status = ? WHERE seat_id = ?";
+    
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, status);
             preparedStatement.setInt(2, seatId);
-            preparedStatement.executeUpdate();
+    
+            int rowsAffected = preparedStatement.executeUpdate();
+            
+            if (rowsAffected == 0) {
+                System.out.println("No rows updated for seat ID: " + seatId);
+            } else {
+                System.out.println("Seat ID " + seatId + " status updated to " + status);
+            }
+        } catch (SQLException e) {
+            System.err.println("SQL Exception occurred while updating seat ID " + seatId + ": " + e.getMessage());
+            e.printStackTrace();  // Log the full stack trace for debugging
+            throw e;  // Re-throw the exception or handle it as needed
         }
     }
 }

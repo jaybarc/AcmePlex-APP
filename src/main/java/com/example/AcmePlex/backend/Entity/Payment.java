@@ -1,6 +1,7 @@
 package com.example.AcmePlex.backend.Entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Payment {
     private int paymentID;
@@ -17,11 +18,12 @@ public class Payment {
     private String cardCvv;
     private String expMonth;
     private String expYear;
+    private List<Integer> seatIds;
 
     // Constructor to initialize Payment object from form data
     public Payment(int paymentID, Double amount, Date paymentDate, String fullName, String email, String address, 
                    String city, String province, String zipCode, String cardName, String cardNumber, 
-                   String cardCvv, String expMonth, String expYear) {
+                   String cardCvv, String expMonth, String expYear, List<Integer> seatIds) {
         this.paymentID = paymentID;
         this.amount = amount;
         this.paymentDate = paymentDate;
@@ -36,6 +38,7 @@ public class Payment {
         this.cardCvv = cardCvv;
         this.expMonth = expMonth;
         this.expYear = expYear;
+        this.seatIds = seatIds;
     }
 
     // Getters and Setters
@@ -149,5 +152,13 @@ public class Payment {
 
     public void setExpYear(String expYear) {
         this.expYear = expYear;
+    }
+
+    public List<Integer> getSeatIds() {
+        return seatIds;
+    }
+
+    public void setSeatIds(List<Integer> seatIds) {
+        this.seatIds = seatIds;
     }
 }

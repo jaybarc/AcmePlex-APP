@@ -56,12 +56,14 @@ window.addEventListener('DOMContentLoaded', function() {
 
 populateSeats();
 let ticketPrice = +screeningSelect.value;
+let selectedSeatIds = [];
 
 function setMovieData(index, price){
     localStorage.setItem('currentIndex', index)
     localStorage.setItem('currentPrice', price);
 
 }
+
 
 function selectedCount(){
     const chosenSeats = document.querySelectorAll('.row .seat.selected');
@@ -74,12 +76,29 @@ function selectedCount(){
 
     //placeholder for backend
     localStorage.setItem('chosenSeats', JSON.stringify(seatInfo))
+    
+    // Get all selected seats and collect their 'data-id' attributes
+    const selectedSeats = [];
+    // Iterate over all selected seats and push the 'data-id' of those with the 'selected' class
+    document.querySelectorAll('.seat.selected').forEach(selectedSeat => {
+        const seatId = selectedSeat.getAttribute('data-id');
+        // Only add to the array if the seatId is not null or empty
+        if (seatId) {
+            selectedSeats.push(seatId);
+        }
+    });
+    
+    // Store the selected seat IDs in localStorage
+    localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+    
+    localStorage.setItem('movieId', screeningSelect.value);
 
     const countChosen =  chosenSeats.length;
     count.innerText = countChosen;
-    total.innerText = countChosen * ticketPrice;
 
 }
+
+
 
 function populateSeats(){
     const selectedSeats = JSON.parse(localStorage.getItem('chosenSeats'))
@@ -113,9 +132,11 @@ tin.addEventListener('click', (e) => {
     if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')){
         e.target.classList.toggle('selected');
     }
-
+   
     selectedCount();
 
 })
 
 selectedCount();
+
+

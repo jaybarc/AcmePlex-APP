@@ -60,7 +60,21 @@
             </option>
         </select>
     </div>
-
+    <div class="screening-tin">
+        <label>Select a Time</label>
+        <select id="timing">
+            <!-- Placeholder option -->
+            <option value="" disabled selected>Select a Time</option>
+            <option value="12:30pm">12:30 PM</option>
+            <option value="2:00pm">2:00 PM</option>
+            <option value="3:30pm">3:30 PM</option>
+            <option value="5:00pm">5:00 PM</option>
+            <option value="6:30pm">6:30 PM</option>
+            <option value="8:00pm">8:00 PM</option>
+            <option value="9:30pm">9:30 PM</option>
+            <option value="11:00pm">11:00 PM</option>
+        </select>
+    </div>
     <ul class="seat-showcase">
         <li>
             <div class="seat"></div>
@@ -86,7 +100,8 @@
                 <div th:each="seat : ${seats}" 
                      th:if="${seat.rowNum == rowNum}" 
                      th:class="${seat.status == 'occupied' ? 'seat occupied' : 
-                                seat.status == 'selected' ? 'seat selected' : 'seat available'}">
+                                seat.status == 'selected' ? 'seat selected' : 'seat available'}"
+                                th:data-id="${seat.seatId}">
                     <!-- Seat will have the correct class based on its status -->
                 </div>
             </div>

@@ -46,8 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Get the number of seats and total from localStorage
         const seatCount = localStorage.getItem('seatCount');
+        const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
         const ticketPrice = 15; // Static price
         const totalPrice = seatCount * ticketPrice;
+
+        console.log(selectedSeats);
 
         // Create an object with all the data to send to the backend or show in the notification
         const paymentData = {
@@ -63,8 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
             expMonth,
             expYear,
             seatCount,
-            totalPrice
-        };
+            amount: totalPrice,
+            seatIds: selectedSeats, 
+
+        }
 
         // Send payment data to the backend (for example, to save in the database and send an email)
         fetch('http://localhost:8080/process-payment', {
@@ -79,7 +84,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.success) {
                 // Notify user of successful payment (this could be a modal, alert, or notification)
                 alert('Payment successful! Thank you for your purchase.');
-
+                localStorage.removeItem('seatCount');
+                localStorage.removeItem('chosenSeats');
+                localStorage.removeItem('ticketPrice');
                 // Redirect to the home page
                 window.location.href = '/'; // Adjust the path to your home page
             } else {
@@ -97,8 +104,5 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/'; // Adjust the path to your home page
     });
 
-    // Optional: Trigger form submit on button click (if you need it to trigger the submit)
-    submitButton.addEventListener('click', function () {
-        form.submit(); // This triggers the form's submit event and runs the code inside the submit handler
-    });
+    
 });

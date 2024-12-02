@@ -96,6 +96,23 @@ public class ReservationController {
     
     @PostMapping("/process-payment")
     public ResponseEntity<Map<String, Object>> processPayment(@RequestBody Payment paymentData) {
+        List<Integer> seatIds = paymentData.getSeatIds();
+
+        // Update seat statuses
+        try {
+            // Attempt to update seats to occupied
+            seatDAO.updateSeatsToOccupied(seatIds); 
+            System.out.println(seatIds);
+
+        } catch (SQLException e) {
+            // Log the error and return a failure response
+            System.err.println("Error occurred while updating seats: " + e.getMessage());
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Failed to update seat statuses");
+            errorResponse.put("message", e.getMessage());
+            return ResponseEntity.status(500).body(errorResponse);
+        }
+
         // Log payment details (you can replace this with saving to a database)
         System.out.println("Processing payment for: " + paymentData.getFullName());
         System.out.println("Payment Amount: $" + paymentData.getAmount());
@@ -128,6 +145,9 @@ public class ReservationController {
         Map<String, Object> response = new HashMap<>();
         response.put("success", true);
         response.put("message", "Payment processed successfully.");
+
+
+
         return ResponseEntity.ok(response);
     }
 
