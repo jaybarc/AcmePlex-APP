@@ -43,24 +43,25 @@
 </div>
 <div class="wrapper">
     <h2>Login to AcmePlex</h2>
-    <form action="#">
+    <form action="/login" method="post">
         <div class="input-box">
-            <input type="text" placeholder="Username" required>
+            <input type="text" name="username" placeholder="Username" required>
         </div>
         <div class="input-box">
-            <input type="password" placeholder="Password" required>
+            <input type="password" name="password" placeholder="Password" required>
         </div>
         <div class="policy">
-            <input type="checkbox" name="" value="">
+            <input type="checkbox" name="remember" value="true">
             <h3>Remember me</h3>
         </div>
         <div class="input-box button">
-            <input type="submit" value="Login Now">
+            <input type="submit" value="Login">
         </div>
         <div class="text">
             <h3>Don't have an account? <a href="/register">Register Now</a></h3>
         </div>
     </form>
 </div>
+
 </body>
 </html>

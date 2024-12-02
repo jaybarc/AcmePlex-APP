@@ -26,10 +26,12 @@
             <div class="profile-tin">
                 <img class="profile-icon" src="content/images/logos/pfp-icon.png">
                 <div class="profile-text">
-                    <p>Profile</p>
+                    <p>
+                        <span th:if="${username != null}">Hello, <span th:text="${username + ' !'}"></span></span>
+                        <span th:if="${username == null}">Profile</span>
+                    </p>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="side-bar">

@@ -9,22 +9,16 @@ public class RegisteredUser extends User {
     private String password;
     private String firstName;
     private String lastName;
-    private String address;
-    private UserBankingInfo paymentInfo;
+    private String email;
     private Date dateToPayFee;
     private List<Announcement> receivedAnnouncements;
 
-    public RegisteredUser(int userID, boolean userType, String userEmail, String username,
-                          String password, String firstName, String lastName, String address, UserBankingInfo paymentInfo,
-                          Date dateToPayFee) {
-        super(userID, userType, userEmail);
+    public RegisteredUser(String username, String password, String firstName, String lastName, String email) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
-        this.paymentInfo = paymentInfo;
-        this.dateToPayFee = dateToPayFee;
+        this.email = email;
     }
 
     public void receiveAnnouncement(Announcement announcement) {
@@ -80,22 +74,7 @@ public class RegisteredUser extends User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public UserBankingInfo getPaymentInfo() {
-        return paymentInfo;
-    }
-
-    public void setPaymentInfo(UserBankingInfo paymentInfo) {
-        this.paymentInfo = paymentInfo;
-    }
+    
 
     public Date getDateToPayFee() {
         return dateToPayFee;

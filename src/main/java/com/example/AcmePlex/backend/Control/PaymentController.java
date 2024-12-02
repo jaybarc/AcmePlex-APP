@@ -5,6 +5,8 @@ import com.example.AcmePlex.backend.Entity.UserBankingInfo;
 
 import java.util.Date;
 
+
+
 public class PaymentController {
 
     private Payment payment;
@@ -30,8 +32,8 @@ public class PaymentController {
         }
 
         // Simulate payment processing (integration with a payment gateway would go here)
-        boolean paymentSuccess = true; // Assume payment is always successful for simplicity
-
+        //boolean paymentSuccess = true; // Assume payment is always successful for simplicity
+        /* 
         if (paymentSuccess) {
             Payment payment = new Payment(
                     generatePaymentId(),

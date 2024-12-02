@@ -25,6 +25,24 @@ function fetchMovies() {
         });
 }
 
+    window.addEventListener('DOMContentLoaded', function() {
+        const button = document.querySelector('.payment-btn');  
+        
+        button.addEventListener('click', function() {
+            // Get the number of selected seats
+            const selectedSeats = document.querySelectorAll('.row .seat.selected');
+            const seatCount = selectedSeats.length;
+
+            // Store the seat count in localStorage
+            localStorage.setItem('seatCount', seatCount);
+
+            // Redirect to payment page
+            window.location.href = 'payment';
+        });
+    });
+
+
+/*
 window.addEventListener('DOMContentLoaded', function() {
     const button = document.querySelector('.payment-btn');  
     
@@ -32,7 +50,7 @@ window.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'payment';  
     });
 });
-
+*/
 //add cancel selection clears all seats button
 
 
