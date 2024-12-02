@@ -23,7 +23,6 @@ public class RegisterController {
     @GetMapping("/register")
     public String Register(){
         return "register";
-
     }
     
 }

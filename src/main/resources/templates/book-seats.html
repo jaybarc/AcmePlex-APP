@@ -60,8 +60,6 @@
             </option>
         </select>
     </div>
-    
-    
 
     <ul class="seat-showcase">
         <li>
@@ -80,17 +78,21 @@
 
     <div class="seat-tin">
         <div class="screen"><p>Front of theater</p></div>
+        
+        <!-- Loop through rows -->
         <div th:each="rowNum : ${#numbers.sequence(1, 7)}">
             <div class="row">
+                <!-- Loop through seats in a row and apply the correct status class -->
                 <div th:each="seat : ${seats}" 
                      th:if="${seat.rowNum == rowNum}" 
-                     th:class="${seat.status} ? 'seat ' + seat.status : 'seat'">
-                    <!-- Seat status will determine the class (available, selected, occupied) -->
+                     th:class="${seat.status == 'occupied' ? 'seat occupied' : 
+                                seat.status == 'selected' ? 'seat selected' : 'seat available'}">
+                    <!-- Seat will have the correct class based on its status -->
                 </div>
             </div>
         </div>
     </div>
-
+    
     <p class="text">
         You have selected <span id="count">0</span> seats for the movie: 
         <span id="movieName" th:text="${selectedMovieName}">[Movie Name]</span>

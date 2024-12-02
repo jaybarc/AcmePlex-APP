@@ -106,4 +106,16 @@ public class UserDAO {
             stmt.executeUpdate();
         }
     }
+    public boolean authenticate(String username, String password) throws SQLException {
+        String query = "SELECT password FROM Users WHERE username = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("password").equals(password);
+                }
+            }
+        }
+        return false;
+    }
 }
