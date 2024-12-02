@@ -1,5 +1,7 @@
 package com.example.AcmePlex.backend.Entity;
 
+import java.util.Random;
+
 public class Ticket {
     private Seat chosenSeat;
     private String ticketID;

@@ -92,6 +92,8 @@ body{
 }
 
 .side-bar-item{
+    position: relative;
+    cursor: pointer;
     
 }
 
@@ -187,3 +189,37 @@ body{
     opacity: 0.5;
 }
 
+
+#search-input{
+    position: absolute;
+    top: -812%;
+    left: 650px;
+    transform: translateY(-50%);
+    display: none;
+    border: 1px solid #808080;
+    padding: 5px;
+    border-radius: 4px;
+    color: #FFF;
+    width: 200 px;
+    z-index: 1000;
+    background-color: rgba(30, 30, 30, 0.8);
+    animation: slideIn 0.3s ease-out;
+
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#search-icon {
+    padding: 5px;
+}
+
+.hidden {
+    display: none;
+}

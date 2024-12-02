@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Payment {
     private int paymentID;
+    
+    private Ticket ticket;
     private Double amount;
     private Date paymentDate;
     private String fullName;
@@ -160,5 +162,9 @@ public class Payment {
 
     public void setSeatIds(List<Integer> seatIds) {
         this.seatIds = seatIds;
+    }
+    
+    public Ticket getTicket() {
+        return ticket;
     }
 }

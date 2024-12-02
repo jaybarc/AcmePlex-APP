@@ -3,18 +3,15 @@ package com.example.AcmePlex.backend.Control;
 import com.example.AcmePlex.backend.Database.DatabaseConnection;
 import com.example.AcmePlex.backend.Database.MovieDAO;
 import com.example.AcmePlex.backend.Database.SeatDAO;
+import com.example.AcmePlex.backend.Database.TicketDAO;
 import com.example.AcmePlex.backend.Entity.Movie;
 import com.example.AcmePlex.backend.Entity.Seat;
 import com.example.AcmePlex.backend.Entity.Payment;
 
+import com.example.AcmePlex.backend.Entity.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.AcmePlex.backend.Entity.GmailSender;
-import com.example.AcmePlex.backend.Entity.Payment;
 
-import java.util.HashMap;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +34,9 @@ public class ReservationController {
 
     private MovieDAO movieDAO;
     private SeatDAO seatDAO;
+    private TicketDAO ticketDAO;
+    
+    private int movieid;
 
     public ReservationController() {
         try {
@@ -47,6 +47,17 @@ public class ReservationController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public String generateRandomTicketCode() {
+        int length = 10;
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder ticketCode = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            ticketCode.append(characters.charAt(random.nextInt(characters.length())));
+        }
+        return ticketCode.toString();
     }
 
     @GetMapping("/book-seats")
@@ -65,6 +76,7 @@ public class ReservationController {
         try {
             List<Movie> movies = movieDAO.getAllMovies();
             List<Seat> seats = seatDAO.getSeatsByMovieId(movieId);
+            this.movieid = movieId;
 
             // Find the selected movie name
             String selectedMovieName = "Unknown Movie";
@@ -90,7 +102,6 @@ public class ReservationController {
     @GetMapping("/book-seats/payment")
     public String Payment(){
         return "payment";
-
     }
 
     
@@ -129,10 +140,16 @@ public class ReservationController {
             + paymentData.getProvince() + " " + paymentData.getZipCode() + "\n\n"
             + "Thank you for choosing AcmePlex.";
 
+        String ticketBody = "Here is your ticket code, please show it to the conductor:\n"+
+        "Ticket Code: " + generateRandomTicketCode() + "\n";
+                
+
         // Send receipt email
         try {
             gmailSender.sendSimpleEmail(paymentData.getEmail(), receiptBody);
             System.out.println("Receipt email sent to " + paymentData.getEmail());
+            gmailSender.sendSimpleEmail(paymentData.getEmail(), ticketBody);
+            System.out.println("Ticket email sent to " + paymentData.getEmail());
         } catch (Exception e) {
             System.err.println("Failed to send email: " + e.getMessage());
             Map<String, Object> errorResponse = new HashMap<>();

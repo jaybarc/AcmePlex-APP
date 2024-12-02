@@ -2,6 +2,7 @@ package com.example.AcmePlex.backend.Database;
 
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class UserDAO {
     private Connection connection;
@@ -11,14 +12,16 @@ public class UserDAO {
     }
 
     // Create a new user in the database
-    public void createUser(String username, String password, String firstName, String lastName, String email) throws SQLException {
-        String query = "INSERT INTO Users (userEmail, username, password, firstName, lastName) VALUES (?, ?, ?, ?, ?)";
+    public void createUser(String username, String password, String firstName, String lastName, String email, LocalDate date,  double bankBalance) throws SQLException {
+        String query = "INSERT INTO Users (userEmail, username, password, firstName, lastName, registrationDate, bankBalance) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, email);
             stmt.setString(2, username);
             stmt.setString(3, password);
             stmt.setString(4, firstName);
             stmt.setString(5, lastName);
+            stmt.setDate(6, Date.valueOf(date));
+            stmt.setDouble(7, bankBalance);
             stmt.executeUpdate();
         }
     }

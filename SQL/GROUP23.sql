@@ -141,21 +141,6 @@ VALUES
 (6, 1, 'available', 10), (6, 2, 'available', 10), (6, 3, 'available', 10), (6, 4, 'available', 10), (6, 5, 'available', 10), (6, 6, 'available', 10), (6, 7, 'available', 10), (6, 8, 'available', 10),
 (7, 1, 'available', 10), (7, 2, 'available', 10), (7, 3, 'available', 10), (7, 4, 'available', 10), (7, 5, 'available', 10), (7, 6, 'available', 10), (7, 7, 'available', 10), (7, 8, 'available', 10);
 
-
-DROP TABLE IF EXISTS Tickets;
-CREATE TABLE Tickets (
-                         ticketId INT PRIMARY KEY AUTO_INCREMENT,
-                         seatId INT NOT NULL,
-                         ticketID VARCHAR(255) NOT NULL,
-                         movieId INT NOT NULL,
-                         showtimeId INT NOT NULL,
-                         roomId INT NOT NULL,
-                         FOREIGN KEY (seatId) REFERENCES Seats(seat_id),
-                         FOREIGN KEY (movieId) REFERENCES Movies(id),
-                         FOREIGN KEY (showtimeId) REFERENCES Showtimes(showtime_id),
-                         FOREIGN KEY (roomId) REFERENCES Rooms(room_id)
-);
-
 DROP TABLE IF EXISTS Showtimes;
 -- Create Showtimes table
 CREATE TABLE Showtimes (
@@ -172,19 +157,35 @@ CREATE TABLE Rooms (
                        room_number INT NOT NULL
 );
 
+DROP TABLE IF EXISTS Tickets;
+CREATE TABLE Tickets (
+                         ticketId INT PRIMARY KEY AUTO_INCREMENT,
+                         seatId INT NOT NULL,
+                         movieId INT NOT NULL,
+                         showtimeId INT NOT NULL,
+                         roomId INT NOT NULL,
+                         FOREIGN KEY (seatId) REFERENCES Seats(seat_id),
+                         FOREIGN KEY (movieId) REFERENCES Movies(id),
+                         FOREIGN KEY (showtimeId) REFERENCES Showtimes(showtime_id),
+                         FOREIGN KEY (roomId) REFERENCES Rooms(room_id)
+);
+
+
+
 -- Drop Users table if it already exists
 DROP TABLE IF EXISTS Payments;
 DROP TABLE IF EXISTS Users;
 
 -- Create Users table
 CREATE TABLE Users (
-                       UserID INT AUTO_INCREMENT PRIMARY KEY,  -- Unique identifier for the user
-                       userEmail VARCHAR(255) NOT NULL,          -- User email
-                       username VARCHAR(255) NOT NULL,         -- Username
-                       password VARCHAR(255) NOT NULL,         -- User password
-                       firstName VARCHAR(255) NOT NULL,        -- User's first name
-                       lastName VARCHAR(255) NOT NULL         -- User's last name
-                       
+    UserID INT AUTO_INCREMENT PRIMARY KEY,  -- Unique identifier for the user
+    userEmail VARCHAR(255) NOT NULL,        -- User email
+    username VARCHAR(255) NOT NULL,         -- Username
+    password VARCHAR(255) NOT NULL,         -- User password
+    firstName VARCHAR(255) NOT NULL,        -- User's first name
+    lastName VARCHAR(255) NOT NULL,         -- User's last name
+    registrationDate DATE,         -- Date of registration
+    bankBalance DECIMAL(10, 2)     -- User's bank balance
 );
 
 -- Create Payments table with userID column
@@ -199,13 +200,13 @@ CREATE TABLE Payments (
                           FOREIGN KEY (userID) REFERENCES Users(UserID) -- Foreign key constraint
 );
 
--- Insert sample users into Users table
-INSERT INTO Users (userEmail, username, password, firstName, lastName) VALUES
-('john.doe@example.com', 'johndoe', 'password123', 'John', 'Doe'),
-('jane.smith@example.com', 'janesmith', 'password456', 'Jane', 'Smith'),
-('alice.johnson@example.com', 'alicej', 'password789', 'Alice', 'Johnson'),
-('bob.brown@example.com', 'bobbrown', 'password101', 'Bob', 'Brown'),
-('charlie.davis@example.com', 'charlied', 'password202', 'Charlie', 'Davis');
+INSERT INTO Users (userEmail, username, password, firstName, lastName, registrationDate, bankBalance)
+VALUES 
+('john.doe@example.com', 'johndoe', 'password123', 'John', 'Doe', '2023-10-01', 1000.00),
+('jane.smith@example.com', 'janesmith', 'password456', 'Jane', 'Smith', '2023-10-02', 1500.50),
+('alice.johnson@example.com', 'alicejohnson', 'password789', 'Alice', 'Johnson', '2023-10-03', 2000.75),
+('bob.brown@example.com', 'bobbrown', 'password321', 'Bob', 'Brown', '2023-10-04', 1200.00),
+('carol.white@example.com', 'carolwhite', 'password654', 'Carol', 'White', '2023-10-05', 1800.25);
 
 -- Insert sample payments into Payments table
 -- Match userID with the appropriate UserID from the Users table

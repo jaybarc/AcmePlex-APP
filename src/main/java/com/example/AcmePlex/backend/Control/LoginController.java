@@ -11,10 +11,12 @@ import org.springframework.ui.Model;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 @Controller
 public class LoginController {
     private UserDAO userDAO;
+    RegisterController registerController;
     public LoginController() {
         try {
             // Set up the connection and DAO
@@ -29,6 +31,7 @@ public class LoginController {
     public String login() {
         return "login";
     }
+    
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model) {
@@ -36,6 +39,7 @@ public class LoginController {
             if (userDAO.authenticate(username, password)) {
                 model.addAttribute("message", "You have successfully logged in.");
                 model.addAttribute("username", username); // Add username to the model
+                
                 return "index"; // Redirect to a welcome page or dashboard
             } else {
                 model.addAttribute("error", "Invalid username or password.");

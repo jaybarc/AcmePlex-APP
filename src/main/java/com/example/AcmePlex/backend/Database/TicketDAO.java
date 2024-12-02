@@ -25,15 +25,13 @@ public class TicketDAO {
     
 
     // Add a new ticket
-    public void addTicket(int seatId, String ticketID, int movieId, int showtimeId, int receiptId, int roomId) throws SQLException {
-        String query = "INSERT INTO Tickets (seatId, ticketID, movieId, showtimeId, receiptId, roomId) VALUES (?, ?, ?, ?, ?, ?)";
+    public void addTicket(int seatId, int movieId, int showtimeId, int roomId) throws SQLException {
+        String query = "INSERT INTO Tickets (seatId, movieId, showtimeId, roomId) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, seatId);
-            stmt.setString(2, ticketID);
-            stmt.setInt(3, movieId);
-            stmt.setInt(4, showtimeId);
-            stmt.setInt(5, receiptId);
-            stmt.setInt(6, roomId);
+            stmt.setInt(2, movieId);
+            stmt.setInt(3, showtimeId);
+            stmt.setInt(4, roomId);
             stmt.executeUpdate();
         }
     }
@@ -49,7 +47,7 @@ public class TicketDAO {
                             rs.getString("ticketID"),
                             movieDAO.getMovieById(rs.getInt("movieId")),
                             (Showtime) showtimeDAO.getShowtimesByMovieId(rs.getInt("movieId")),
-                            new ScreeningRoom(new Theater(), rs.getString("roomId"),seats,5)
+                            new ScreeningRoom(new Theater(), rs.getInt("roomId"),seats,5)
                     );
                 }
             }
