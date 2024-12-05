@@ -1,8 +1,12 @@
 # AcmePlex Application
-
 ---
 AcmePlex is a movie booking application built with Java, Spring Boot, and MySQL. The application allows users to register, view movies, book seats, and make payments.
 
+## Contributors
+- [David Nguyen](https://github.com/DavidNg32)
+- [Jerome Barcelona](https://github.com/jaybarc)
+- [Alyan Qureshi](https://github.com/AlyanQureshi)
+- [Jaival Patel](https://github.com/jaivalp22)
 ## Technologies Used
 
 - Java (Must be JDK version 21 or above (21 recommended))
@@ -40,4 +44,17 @@ AcmePlex is a movie booking application built with Java, Spring Boot, and MySQL.
 6. Open your browser and go to `http://localhost:8080`.
 
 ---
+## Preview
+### Homepage
+![image](https://github.com/user-attachments/assets/59c810af-6d50-43de-a10b-6a17c2188746)
+
+### Seat Viewing And Booking
+![image](https://github.com/user-attachments/assets/79852292-f06e-4c2b-a179-37d921307964)
+
+### Payment For Your Ticket
+![image](https://github.com/user-attachments/assets/d98a699b-6821-4d04-843f-234b902b0010)
+
+
+
+
 
